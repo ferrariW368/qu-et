@@ -1,0 +1,10 @@
+# Cloudflare Pages config (Git integration reads this file). Output folder = dist/ from tools/make-dist.py.
+name = "qu-et"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-10-17"
+
+# revU: pre-order requests (functions/api/preorder.js) until payment opens.
+[[d1_databases]]
+binding = "DB"
+database_name = "quet-preorders"
+database_id = "ec154220-5361-4f97-8a36-294a544d244f"

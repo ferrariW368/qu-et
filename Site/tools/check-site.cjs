@@ -128,17 +128,19 @@ for (const { lang, key, route, file } of pages) {
 }
 done('Language pairs: lang, hreflang alternates, same-page switch, links stay in language');
 
-// revS2: one form only, on the checkout pages; its fields keep autofill purpose tokens (WCAG 1.3.5); payment stays closed.
+// revS2: one form only, on the checkout pages; its fields keep autofill purpose tokens (WCAG 1.3.5).
+// revU: no payment button anywhere; the last step sends a pre-order request (tested below with a mocked fetch).
 for (const { route, key, file } of [...pages, ...extra]) {
   const doc = new JSDOM(fs.readFileSync(file, 'utf8')).window.document;
   assert.equal(doc.querySelectorAll('form').length, key === 'checkout' ? 1 : 0, route + ' forms');
   if (key === 'checkout') {
     for (const input of doc.querySelectorAll('#checkout-form input')) assert.ok(input.autocomplete && input.autocomplete !== 'off', 'autocomplete ' + input.name);
-    assert.equal(doc.querySelector('#checkout-review .payment-closed').disabled, true, 'payment closed until Shopier is wired');
+    assert.equal(doc.querySelector('.payment-closed, a[href*="shopier"]'), null, 'no payment step before the tax certificate');
+    assert.ok(doc.getElementById('send-preorder') && doc.getElementById('preorder-result').dataset.sent, 'request button and its result text');
   }
 }
 for (const file of ['404.html', 'tr/404.html']) assert.ok(fs.existsSync(path.join(root, file)), file);
-done('Checkout: single local form, autofill tokens, payment step closed; 404 pages exist');
+done('Checkout: single local form, autofill tokens, request step instead of payment; 404 pages exist');
 
 // revS2: the bag in both languages — product quantity, add, drawer, carried to the next page through storage, bag totals, removal.
 const KEY = 'quet-bag-v1';
@@ -212,7 +214,6 @@ for (const lang of ['en', 'tr']) {
   assert.equal(doc.getElementById('checkout-review').hidden, false);
   assert.equal(doc.querySelector('#review-address img'), null, 'Customer text must not create HTML');
   assert.ok(doc.getElementById('review-address').textContent.includes(values.firstName));
-  assert.equal(doc.querySelector('#checkout-review button.primary-button').disabled, true, 'no fake payment');
   assert.ok(!checkout.window.location.href.includes('preview%40') && !checkout.window.location.href.includes('address'), 'no PII in the URL');
   assert.ok(!(checkout.window.localStorage.getItem(KEY) || '').includes('preview'), 'no PII in storage');
   click(checkout, '#edit-checkout');
@@ -220,7 +221,7 @@ for (const lang of ['en', 'tr']) {
   assert.equal(form.elements.namedItem('email').value, values.email);
   cartPages.push(hostile, broken, checkout);
 }
-done('Untrusted/corrupt bag data sanitized; checkout validation, review/edit, safe text, no PII kept, no fake payment (both languages)');
+done('Untrusted/corrupt bag data sanitized; checkout validation, review/edit, safe text, no PII kept (both languages)');
 
 const COPY = {
   tr: { summaries: ['Malzeme', 'Ölçü', 'Ön sipariş ve teslim'], material: '925 ayar gümüş', limited: 'Sınırlı üretim', sample: 'Örnek fiyat', band: 'Koleksiyonu keşfet' },
@@ -325,9 +326,37 @@ assert.ok(doc.querySelector('.hero-mark-c'));
 assert.equal(doc.querySelector('.hero-preview.is-playing'), null);
 done('Collection A cards in both languages and hero B/C comparison with replay');
 
+// revU: sending the request posts only bag + typed details to /api/preorder; success empties the stored bag, failure keeps it.
+(async () => {
+  for (const [lang, ok] of [['en', true], ['tr', false]]) {
+    const page = makePage(ROUTES[lang].checkout, { items: { peak: 2 }, at: 1 });
+    const doc = documentOf(page), form = doc.getElementById('checkout-form');
+    const calls = [];
+    page.window.fetch = async (url, init) => { calls.push({ url, init }); return { ok, json: async () => ({ ok }) }; };
+    const values = { email: 'a@b.co', firstName: 'A', lastName: 'B', country: 'HK', address: 'X 1', city: 'Hong Kong', postal: '000', phone: '' };
+    for (const [k, v] of Object.entries(values)) form.elements.namedItem(k).value = v;
+    form.dispatchEvent(new page.window.Event('submit', { bubbles: true, cancelable: true }));
+    click(page, '#send-preorder');
+    await new Promise(r => setTimeout(r, 20));
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].url, '/api/preorder');
+    const sent = JSON.parse(calls[0].init.body);
+    assert.deepEqual(sent.items, { peak: 2 });
+    assert.equal(sent.lang, lang);
+    assert.equal(sent.email, 'a@b.co');
+    const result = doc.getElementById('preorder-result');
+    assert.equal(result.hidden, false);
+    assert.equal(result.textContent, ok ? result.dataset.sent : result.dataset.error);
+    const stored = JSON.parse(page.window.localStorage.getItem(KEY));
+    assert.deepEqual(stored.items, ok ? {} : { peak: 2 }, ok ? 'success empties the bag' : 'failure keeps the bag');
+    assert.equal(doc.getElementById('send-preorder').disabled, !ok ? false : true);
+    page.window.close();
+  }
+  done('Pre-order request: posts bag + details once, success message and empty bag, error keeps the bag (both languages)');
 for (const dom of [...opened, ...cartPages]) dom.window.close();
 assert.deepEqual(errors, []);
 const report = { checkedAt: new Date().toISOString(), groups: passed, jsdomErrors: errors, browserVisualVerification: false, paymentEnabled: false };
 fs.mkdirSync(path.join(root, 'review'), { recursive: true });
 fs.writeFileSync(path.join(root, 'review/check-results.json'), JSON.stringify(report, null, 2));
 console.log(`Completed ${passed.length} groups. Browser rendering and live payment are not covered.`);
+})().catch(error => { console.error(error); process.exit(1); });

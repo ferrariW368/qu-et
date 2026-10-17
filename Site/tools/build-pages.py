@@ -87,15 +87,15 @@ T['tr'].update({
   'bag_title': 'Sepetin', 'bag_meta': 'Hong Kong koleksiyonundan seçtiğin tasarımlar.', 'bag_empty': 'Sepetin henüz boş.',
   'bag_empty_sub': 'Hong Kong koleksiyonunu keşfet.', 'bag_back': 'Koleksiyona dön', 'bag_continue': 'Koleksiyona devam et',
   'summary': 'Sipariş özeti', 'pieces': 'Parça sayısı', 'sample_total': 'Örnek toplam', 'to_checkout': 'Ön siparişe devam et',
-  'bag_note': "Ön siparişler 8 Kasım'da açılıyor. Gösterilen EUR fiyatları tasarım örneğidir. Bu önizlemede ödeme alınmaz ve sipariş oluşturulmaz.",
+  'bag_note': "Ön siparişler 8 Kasım'da açılıyor. Gösterilen EUR fiyatları tasarım örneğidir. Ödeme alınmaz; ön sipariş talebi oluşturulur.",
   'co_title': 'Sipariş bilgileri', 'co_page': 'Ön sipariş', 'co_meta': 'Hong Kong koleksiyonu ön sipariş akışı.', 'co_steps': 'Sipariş adımları',
   'co_s1': 'Bilgiler', 'co_s2': 'Kontrol', 'co_s3': 'Ödeme', 'co_empty': 'Önce bir tasarım seç.', 'co_empty_sub': "Ön siparişler 8 Kasım'da açılıyor.",
   'co_contact': 'İletişim', 'co_first': 'Ad', 'co_last': 'Soyad', 'co_address_legend': 'Teslimat adresi', 'co_country': 'Ülke / Bölge',
   'co_address': 'Adres', 'co_city': 'Şehir', 'co_postal': 'Posta kodu', 'co_phone': 'Telefon (isteğe bağlı)',
-  'co_note': 'Tasarım önizlemesi: örnek bilgilerle akışı inceleyebilirsin. Bilgiler gönderilmez veya kaydedilmez; ödeme alınmaz.',
+  'co_note': 'Ödeme alınmaz. Bilgilerin yalnızca talebi gönderdiğinde iletilir ve sadece bu ön sipariş için kullanılır.',
   'co_review_btn': 'Bilgileri gözden geçir', 'co_review_title': 'Bilgilerini kontrol et', 'co_edit': 'Bilgileri düzenle',
-  'co_pay_title': "Ödeme Shopier'in güvenli sayfasında alınacak.", 'co_pay_text': "Ön siparişler 8 Kasım'da açılıyor. Bu önizleme sipariş oluşturmaz.",
-  'co_pay_btn': 'Shopier ile öde · 8 Kasım', 'co_your': 'Seçtiklerin',
+  'co_pay_title': 'Ödeme henüz açılmadı.', 'co_pay_text': "Talebini bırak; ödeme Shopier'in güvenli sayfasında açıldığında sana e-postayla döneceğiz.", 'co_sent': 'Talebin alındı. Ödeme açıldığında e-postayla döneceğiz.', 'co_err': 'Gönderilemedi. Lütfen tekrar dene ya da bize e-postayla yaz.',
+  'co_pay_btn': 'Ön sipariş talebini gönder', 'co_your': 'Seçtiklerin',
   'co_sum_note': 'Gösterilen EUR fiyatları tasarım örneğidir. Kargo ücreti ve teslim takvimi sipariş öncesinde paylaşılacak.', 'co_edit_bag': 'Sepeti düzenle',
 })
 T['en'].update({
@@ -105,15 +105,15 @@ T['en'].update({
   'bag_title': 'Your bag', 'bag_meta': 'The pieces you chose from the Hong Kong collection.', 'bag_empty': 'Your bag is empty.',
   'bag_empty_sub': 'Explore the Hong Kong collection.', 'bag_back': 'Back to the collection', 'bag_continue': 'Continue browsing',
   'summary': 'Order summary', 'pieces': 'Pieces', 'sample_total': 'Sample total', 'to_checkout': 'Continue to pre-order',
-  'bag_note': 'Pre-orders open on 8 November. EUR prices shown are design samples. No payment is taken and no order is created in this preview.',
+  'bag_note': 'Pre-orders open on 8 November. EUR prices shown are design samples. No payment is taken; a pre-order request is created.',
   'co_title': 'Order details', 'co_page': 'Pre-order', 'co_meta': 'Hong Kong collection pre-order.', 'co_steps': 'Order steps',
   'co_s1': 'Details', 'co_s2': 'Review', 'co_s3': 'Payment', 'co_empty': 'Choose a piece first.', 'co_empty_sub': 'Pre-orders open on 8 November.',
   'co_contact': 'Contact', 'co_first': 'First name', 'co_last': 'Last name', 'co_address_legend': 'Delivery address', 'co_country': 'Country / Region',
   'co_address': 'Address', 'co_city': 'City', 'co_postal': 'Postcode', 'co_phone': 'Phone (optional)',
-  'co_note': 'Design preview: try the flow with sample details. Nothing is sent or stored, and no payment is taken.',
+  'co_note': 'No payment is taken. Your details are sent only when you submit the request and are used only for this pre-order.',
   'co_review_btn': 'Review details', 'co_review_title': 'Check your details', 'co_edit': 'Edit details',
-  'co_pay_title': "Payment will be taken on Shopier's secure page.", 'co_pay_text': 'Pre-orders open on 8 November. This preview does not create an order.',
-  'co_pay_btn': 'Pay with Shopier · 8 November', 'co_your': 'Your pieces',
+  'co_pay_title': 'Payment is not open yet.', 'co_pay_text': "Leave your request; we will email you when payment opens on Shopier's secure page.", 'co_sent': 'Request received. We will email you when payment opens.', 'co_err': 'Could not send. Please try again or email us.',
+  'co_pay_btn': 'Send pre-order request', 'co_your': 'Your pieces',
   'co_sum_note': 'EUR prices shown are design samples. Shipping cost and delivery dates will be shared before you order.', 'co_edit_bag': 'Edit bag',
 })
 
@@ -403,7 +403,7 @@ def build(lang):
         <p class="checkout-preview-note">{t['co_note']}</p>
         <button class="primary-button" type="submit" disabled>{t['co_review_btn']}</button>
       </form>
-      <section id="checkout-review" hidden aria-labelledby="review-title" tabindex="-1"><h2 id="review-title">{t['co_review_title']}</h2><address class="review-address" id="review-address"></address><div class="review-actions"><button class="secondary-button" type="button" id="edit-checkout">{t['co_edit']}</button></div><div class="notice-panel"><h3>{t['co_pay_title']}</h3><p>{t['co_pay_text']}</p></div><button class="primary-button payment-closed" type="button" disabled>{t['co_pay_btn']}</button></section>
+      <section id="checkout-review" hidden aria-labelledby="review-title" tabindex="-1"><h2 id="review-title">{t['co_review_title']}</h2><address class="review-address" id="review-address"></address><div class="review-actions"><button class="secondary-button" type="button" id="edit-checkout">{t['co_edit']}</button></div><div class="notice-panel"><h3>{t['co_pay_title']}</h3><p>{t['co_pay_text']}</p></div><button class="primary-button" type="button" id="send-preorder">{t['co_pay_btn']}</button><p class="summary-note" id="preorder-result" role="status" hidden data-sent="{t['co_sent']}" data-error="{t['co_err']}"></p></section>
     </div>
     <aside class="summary-panel" aria-labelledby="checkout-summary"><h2 id="checkout-summary">{t['co_your']}</h2><div class="checkout-summary-items" data-cart-items="summary"></div><div class="summary-row summary-total"><span>{t['sample_total']}</span><span data-cart-total>€0</span></div><p class="summary-note">{t['co_sum_note']}</p><a class="text-link" href="{r['bag']}">{t['co_edit_bag']}</a></aside>
   </section>

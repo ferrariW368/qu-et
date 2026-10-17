@@ -256,6 +256,33 @@
       document.querySelector('[data-step="1"]').setAttribute('aria-current', 'step');
       checkoutForm.elements.namedItem('email').focus();
     });
+    // revU: payment is not open (no tax certificate yet), so the last step sends a pre-order request instead.
+    // Only on this explicit click do the details leave the page (POST /api/preorder, same origin); nothing is stored locally.
+    const send = document.getElementById('send-preorder');
+    const result = document.getElementById('preorder-result');
+    send?.addEventListener('click', async () => {
+      if (!totalCount() || send.disabled) return;
+      send.disabled = true;
+      const body = { lang: tr ? 'tr' : 'en', items: state.items };
+      for (const input of checkoutForm.querySelectorAll('input')) body[input.name] = input.value.trim();
+      let ok = false;
+      try {
+        const response = await fetch('/api/preorder', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
+        ok = response.ok && (await response.json()).ok === true;
+      } catch { ok = false; }
+      result.textContent = ok ? result.dataset.sent : result.dataset.error;
+      result.hidden = false;
+      announce(result.textContent);
+      if (ok) {
+        state = { items: {}, at: Math.max(Date.now(), state.at + 1) };
+        save(); // bag emptied for next visits; this page keeps showing the sent summary
+        document.querySelectorAll('[data-open-cart]').forEach(node => { node.hidden = true; });
+        document.getElementById('edit-checkout').hidden = true;
+        send.hidden = true;
+      } else {
+        send.disabled = false;
+      }
+    });
     // Enable submission only after its local-only handler has been attached.
     checkoutForm.querySelector('button[type="submit"]').disabled = false;
   }
