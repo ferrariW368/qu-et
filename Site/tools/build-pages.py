@@ -306,11 +306,11 @@ def build(lang):
       {collection_card(lang, 'peak', 'Peak', t['earring'])}
       {collection_card(lang, 'mid-levels', 'Mid-Levels', t['ring'])}
     </div>
-    <div class="launch-note"><p>{t['launch']}</p><a href="{r['about']}">{t['about_quet']}</a></div>
   </section>
 </main>'''
     page(lang, 'collection', 'Hong Kong', t['collection_meta'], collection, current='collection')
 
+    # revT (17 Oct, Eren): the launch-date row under the cards is gone (date sits on product pages, About in the menu).
     # revN (17 Oct): About built from Pınar's own material (@pinar.ink, Hong Kong Flash sheets, 27 Sep 2026; Eren has full rights).
     about = f'''<main id="main">
   <section class="about-artist shell" aria-labelledby="about-title">

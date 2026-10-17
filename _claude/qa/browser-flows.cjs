@@ -12,12 +12,15 @@ module.exports = async (browser, url, out, report) => {
   await page.goto(url('peak/'));
   await page.evaluate(() => localStorage.removeItem('quet-bag-v1'));
   await page.reload();
-  await page.click('[data-add-to-cart]');
-  await page.waitForTimeout(60);
-  const mid = await page.$eval('#cart-dialog', d => d.getBoundingClientRect().left);
+  // revT: sample in-page on the next frames after the click. A fixed 60 ms wait measured from Node was
+  // flaky under CPU load: the .28 s ease-out curve is ~95% done by then, so a real slide could read as a pop.
+  const mid = await page.evaluate(() => new Promise(resolve => {
+    document.querySelector('[data-add-to-cart]').click();
+    requestAnimationFrame(() => requestAnimationFrame(() => resolve(document.getElementById('cart-dialog').getBoundingClientRect().left)));
+  }));
   await page.waitForTimeout(600);
   const end = await page.$eval('#cart-dialog', d => d.getBoundingClientRect().left);
-  flows.drawer = { leftAt60ms: Math.round(mid), leftAt660ms: Math.round(end), slides: mid > end + 20 };
+  flows.drawer = { leftAtFrame2: Math.round(mid), leftAt600ms: Math.round(end), slides: mid > end + 20 };
   await page.screenshot({ path: path.join(out, 'flow-drawer.png') });
   await page.click('#cart-dialog .icon-close');
   await page.waitForTimeout(500);
