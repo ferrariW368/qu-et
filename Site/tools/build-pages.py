@@ -390,8 +390,8 @@ def build(lang):
       <div class="frame-dots" aria-hidden="true"><span class="is-active"></span><span></span><span></span></div>
     </div>
     <div class="product-info">
-      <a class="product-back" href="{r['collection']}">Hong Kong</a><h1>{name}</h1><p class="product-kind">{kind}</p>
-      <p class="product-story">{t['story_' + pid]}</p>
+      <a class="product-back" href="{r['collection']}">Hong Kong</a><h1>{name}</h1>
+      <!-- revV (17 Oct, Eren): kind label and story hidden for now; copy stays in T['story_*'] for later. -->
       <div class="price-block"><p class="price-label">{t['sample_price']}</p><p class="sample-price">€{price}</p><span class="price-meta">{t['preorder_date']}</span><span class="price-meta edition-note">{t['limited']}</span></div>
       <div class="order-actions"><div class="quantity-control" aria-label="{t['qty_group']}"><button type="button" data-product-quantity="-1" aria-label="{t['qty_dec']}">−</button><input id="product-quantity" type="number" min="1" max="50" value="1" inputmode="numeric" aria-label="{t['qty']}"><button type="button" data-product-quantity="1" aria-label="{t['qty_inc']}">+</button></div><button class="primary-button" type="button" data-add-to-cart="{pid}">{t['add']}</button></div>
       <div class="product-details">
