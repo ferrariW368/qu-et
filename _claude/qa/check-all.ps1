@@ -15,7 +15,7 @@ try {
   if ($b.errors.Count -or $b.small.Count -or $b.overflow.Count -or -not $b.flows.drawer.slides -or -not $b.flows.checkout.ok -or -not $b.flows.lang.ok -or -not $b.flows.zoom.ok) { $b | ConvertTo-Json -Depth 5; throw 'browser-check FAILED' }
   node axe-check.cjs; if ($LASTEXITCODE) { throw 'axe FAILED' }
   $c = (node c-check.cjs) -join "`n" | ConvertFrom-Json
-  if ($c.firstVisit.seen -or -not $c.returnVisit.seen -or $c.returnVisit.logo -ne '1' -or $c.errors.Count) { $c | ConvertTo-Json -Depth 4; throw 'C-check FAILED' }
+  if ($c.firstVisit.seen -or -not $c.returnVisit.seen -or $c.returnVisit.logo -ne '0' -or $c.returnVisit.wordmark -ne '1' -or $c.scrolled.fade -ne '0.000' -or $c.scrolled.logo -ne '1' -or $c.errors.Count) { $c | ConvertTo-Json -Depth 4; throw 'C-check FAILED' }
   if ($args -contains '-perf') { node perf-check.cjs }
   'TUM KONTROLLER GECTI'
 } finally { Stop-Process -Id $server.Id -ErrorAction SilentlyContinue }

@@ -12,7 +12,7 @@ Site/arsiv/
 Site/review/
 _claude/shots/
 _claude/referans/
-_claude/dist-eski-revS/
+_claude/dist-eski-*/
 _claude/archify_work/
 _claude/*.tar.gz
 *.log

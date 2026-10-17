@@ -1,4 +1,4 @@
-// C grubu doğrulaması (gerçek Chrome, CSP'li sunucu): logo dönüşü, fiyat etiketi (metal buton K2-B ile kaldırıldı).
+// C grubu + revT doğrulaması (gerçek Chrome, CSP'li sunucu): logo dönüşü, fiyat etiketi (metal buton K2-B ile kaldırıldı).
 const path = require('node:path');
 const { chromium } = require('playwright-core');
 const base = process.env.QUET_BASE || 'http://127.0.0.1:8766/';
@@ -18,6 +18,10 @@ const out = path.resolve(__dirname, '../shots');
   await page.reload();
   await page.waitForTimeout(300);
   r.returnVisit = await page.evaluate(() => ({ seen: document.documentElement.classList.contains('intro-seen'), logo: getComputedStyle(document.querySelector('.site-header .logo')).opacity, wordmark: getComputedStyle(document.querySelector('.hero-mark-animated')).opacity }));
+  // revT: scrolling past ~45% of the hero fades the wall wordmark out and brings the corner logo in.
+  await page.evaluate(() => window.scrollTo(0, document.querySelector('.hero').offsetHeight));
+  await page.waitForTimeout(500);
+  r.scrolled = await page.evaluate(() => ({ fade: document.documentElement.style.getPropertyValue('--hero-fade'), logo: getComputedStyle(document.querySelector('.site-header .logo')).opacity }));
 
   await page.goto(base + 'peak/');
   await page.locator('.price-block').screenshot({ path: path.join(out, 'c-price.png') });

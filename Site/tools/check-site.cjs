@@ -291,8 +291,9 @@ for (const lang of ['en', 'tr']) {
   assert.equal(doc.querySelector('script[src*="liquid-metal"]'), null, 'K2-B: no shader on the homepage');
   assert.equal(doc.querySelectorAll('.scene-duo > .scene-pair').length, 2, 'K3-B: Peak and Mid-Levels as an editorial pair');
   assert.ok(!doc.body.textContent.includes('Önce tende.'));
+  assert.equal(home.window.document.documentElement.style.getPropertyValue('--hero-fade'), '1.000', 'revT: wordmark fully visible at the top, fades with scroll');
 }
-done('Home in both languages: flat silver logo, fixed sunlight mask, product scenes, text link and editorial pair');
+done('Home in both languages: silver wordmark fading with scroll, fixed sunlight mask, product scenes, text link and editorial pair');
 
 for (const lang of ['en', 'tr']) {
   const collection = makePage(ROUTES[lang].collection);

@@ -282,6 +282,21 @@
   });
   renderBag();
 
+  // revT: the hero wordmark fades as the page scrolls and the corner logo takes over (CSS reads --hero-fade).
+  // CSSOM writes are allowed under the CSP; only inline style attributes in markup are blocked.
+  const hero = document.querySelector('.home .hero');
+  if (hero) {
+    let frame = 0;
+    const fade = () => {
+      frame = 0;
+      const span = (hero.offsetHeight || 1) * 0.45;
+      const progress = Math.min(1, Math.max(0, window.scrollY / span));
+      document.documentElement.style.setProperty('--hero-fade', (1 - progress).toFixed(3));
+    };
+    window.addEventListener('scroll', () => { if (!frame) frame = requestAnimationFrame(fade); }, { passive: true });
+    fade();
+  }
+
   // Embedded previews can keep the host frame's scroll across page changes: start new pages at the top.
   try {
     const nav = performance.getEntriesByType('navigation')[0];
