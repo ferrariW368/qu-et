@@ -13,8 +13,8 @@ const root = path.resolve(__dirname, '..');
 const script = fs.readFileSync(path.join(root, 'assets/site.js'), 'utf8');
 const comparisonScript = fs.readFileSync(path.join(root, 'assets/comparison.js'), 'utf8');
 const ROUTES = {
-  en: { home: '/', collection: '/collection/', about: '/about/', peak: '/peak/', 'mid-levels': '/mid-levels/', bag: '/bag/', checkout: '/checkout/' },
-  tr: { home: '/tr/', collection: '/tr/koleksiyon/', about: '/tr/hakkimizda/', peak: '/tr/peak/', 'mid-levels': '/tr/mid-levels/', bag: '/tr/sepet/', checkout: '/tr/siparis/' },
+  en: { home: '/', collection: '/collection/', about: '/about/', peak: '/peak/', 'mid-levels': '/mid-levels/', bag: '/bag/', checkout: '/checkout/', privacy: '/privacy/' },
+  tr: { home: '/tr/', collection: '/tr/koleksiyon/', about: '/tr/hakkimizda/', peak: '/tr/peak/', 'mid-levels': '/tr/mid-levels/', bag: '/tr/sepet/', checkout: '/tr/siparis/', privacy: '/tr/kvkk/' },
 };
 const fileOf = route => path.join(root, decodeURIComponent(route), route.endsWith('/') ? 'index.html' : '');
 const pages = [];

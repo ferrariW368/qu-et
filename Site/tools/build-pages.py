@@ -12,8 +12,8 @@ SITE = Path(__file__).resolve().parents[1]
 # Payment will be Shopier (SİTE 04); until it is wired, the last step is a disabled "Pay with Shopier" button.
 
 ROUTES = {
-    'en': {'home': '/', 'collection': '/collection/', 'about': '/about/', 'peak': '/peak/', 'mid-levels': '/mid-levels/', 'bag': '/bag/', 'checkout': '/checkout/'},
-    'tr': {'home': '/tr/', 'collection': '/tr/koleksiyon/', 'about': '/tr/hakkimizda/', 'peak': '/tr/peak/', 'mid-levels': '/tr/mid-levels/', 'bag': '/tr/sepet/', 'checkout': '/tr/siparis/'},
+    'en': {'home': '/', 'collection': '/collection/', 'about': '/about/', 'peak': '/peak/', 'mid-levels': '/mid-levels/', 'bag': '/bag/', 'checkout': '/checkout/', 'privacy': '/privacy/'},
+    'tr': {'home': '/tr/', 'collection': '/tr/koleksiyon/', 'about': '/tr/hakkimizda/', 'peak': '/tr/peak/', 'mid-levels': '/tr/mid-levels/', 'bag': '/tr/sepet/', 'checkout': '/tr/siparis/', 'privacy': '/tr/kvkk/'},
 }
 
 # Copy: TR as approved; EN drafted 17 Oct (_claude/metin-en-taslak.md), awaiting Eren's approval.
@@ -117,6 +117,30 @@ T['en'].update({
   'co_sum_note': 'EUR prices shown are design samples. Shipping cost and delivery dates will be shared before you order.', 'co_edit_bag': 'Edit bag',
 })
 
+# revU2 (17 Oct): sample privacy notice so the flow looks complete. DRAFT: bracketed parts wait for the company details.
+T['tr'].update({'privacy': 'KVKK', 'privacy_read': 'Aydınlatma metni', 'pv_title': 'Kişisel verilerin korunması', 'pv_meta': 'qu/et KVKK aydınlatma metni.',
+ 'pv_draft': 'Taslak: şirket bilgileri eklendiğinde güncellenecektir.',
+ 'pv_body': [
+  ('Veri sorumlusu', '[Pınar ...] — qu/et, [adres], vergi no [..]. İletişim: pnar.akdemiir@gmail.com'),
+  ('Hangi verileri topluyoruz', 'Ön sipariş talebinde paylaştığın ad, soyad, e-posta, telefon (isteğe bağlı) ve teslimat adresi ile seçtiğin ürünler.'),
+  ('Ne için kullanıyoruz', 'Yalnızca ön sipariş talebini değerlendirmek, ödeme açıldığında seninle iletişime geçmek ve siparişi teslim etmek için.'),
+  ('Hukuki sebep', '6698 sayılı KVKK md. 5/2-c: bir sözleşmenin kurulması veya ifasıyla doğrudan ilgili olması.'),
+  ('Kimlerle paylaşıyoruz', 'Ödeme aşamasında ödeme kuruluşu (Shopier) ve teslimat için kargo firmasıyla, yalnızca gerekli ölçüde. Veriler Cloudflare altyapısında saklanır.'),
+  ('Saklama süresi', 'Talep sonuçlanana kadar; sipariş oluşursa yasal saklama süreleri boyunca.'),
+  ('Hakların', 'KVKK md. 11 kapsamında verilerine erişme, düzeltme, silinmesini isteme ve itiraz haklarını e-postayla kullanabilirsin.'),
+ ]})
+T['en'].update({'privacy': 'Privacy', 'privacy_read': 'Privacy notice', 'pv_title': 'Privacy notice', 'pv_meta': 'qu/et privacy notice.',
+ 'pv_draft': 'Draft: will be updated once the company details are registered.',
+ 'pv_body': [
+  ('Controller', '[Pınar ...] — qu/et, [address], tax no [..]. Contact: pnar.akdemiir@gmail.com'),
+  ('What we collect', 'The name, email, phone (optional) and delivery address you share in a pre-order request, and the pieces you choose.'),
+  ('Why', 'Only to review your pre-order request, contact you when payment opens and deliver your order.'),
+  ('Legal basis', 'Turkish Personal Data Protection Law (KVKK) art. 5/2-c: necessary to enter into or perform a contract.'),
+  ('Who we share it with', 'The payment provider (Shopier) at payment and the courier for delivery, only as needed. Data is stored on Cloudflare infrastructure.'),
+  ('How long', 'Until your request is resolved; if an order is placed, for the legally required retention period.'),
+  ('Your rights', 'You can ask to access, correct or delete your data, or object, by email (KVKK art. 11).'),
+ ]})
+
 # perf: srcset candidates are read from disk (files written by tools/make-variants.py),
 # so this table never drifts from the images; a stem without variants simply gets no srcset.
 IMAGES = SITE / 'assets' / 'images'
@@ -202,7 +226,7 @@ def footer(lang):
     t, r = T[lang], ROUTES[lang]
     return f'''<footer class="site-footer"><div class="shell">
   <div class="footer-row">
-    <nav class="footer-links" aria-label="{t['footer_menu']}"><a href="{r['collection']}">{t['collection']}</a><a href="{r['about']}">{t['about']}</a><a href="{r['about']}#studio">{t['studio']}</a><a href="https://www.instagram.com/pinar.ink/" target="_blank" rel="noopener">Instagram</a><a href="mailto:pnar.akdemiir@gmail.com">{t['email']}</a></nav>
+    <nav class="footer-links" aria-label="{t['footer_menu']}"><a href="{r['collection']}">{t['collection']}</a><a href="{r['about']}">{t['about']}</a><a href="{r['about']}#studio">{t['studio']}</a><a href="https://www.instagram.com/pinar.ink/" target="_blank" rel="noopener">Instagram</a><a href="mailto:pnar.akdemiir@gmail.com">{t['email']}</a><a href="{r['privacy']}">{t['privacy']}</a></nav>
     <div class="place-times"><span>{t['istanbul']} <time data-clock="Europe/Istanbul"></time></span><span>Hong Kong <time data-clock="Asia/Hong_Kong"></time></span></div>
     <span class="footer-copy">© 2026</span>
   </div>
@@ -400,7 +424,7 @@ def build(lang):
       <form class="checkout-form" id="checkout-form" novalidate>
         <fieldset><legend>{t['co_contact']}</legend><div class="field-grid"><label class="field field-wide">{t['email']}<input name="email" type="email" autocomplete="email" required maxlength="160"></label><label class="field">{t['co_first']}<input name="firstName" autocomplete="given-name" required maxlength="60"></label><label class="field">{t['co_last']}<input name="lastName" autocomplete="family-name" required maxlength="60"></label></div></fieldset>
         <fieldset><legend>{t['co_address_legend']}</legend><div class="field-grid"><label class="field field-wide">{t['co_country']}<input name="country" required maxlength="80" autocomplete="country-name"></label><label class="field field-wide">{t['co_address']}<input name="address" required maxlength="200" autocomplete="street-address"></label><label class="field">{t['co_city']}<input name="city" required maxlength="80" autocomplete="address-level2"></label><label class="field">{t['co_postal']}<input name="postal" required maxlength="20" autocomplete="postal-code"></label><label class="field field-wide">{t['co_phone']}<input name="phone" type="tel" maxlength="30" autocomplete="tel"></label></div></fieldset>
-        <p class="checkout-preview-note">{t['co_note']}</p>
+        <p class="checkout-preview-note">{t['co_note']} <a class="text-link" href="{r['privacy']}">{t['privacy_read']}</a></p>
         <button class="primary-button" type="submit" disabled>{t['co_review_btn']}</button>
       </form>
       <section id="checkout-review" hidden aria-labelledby="review-title" tabindex="-1"><h2 id="review-title">{t['co_review_title']}</h2><address class="review-address" id="review-address"></address><div class="review-actions"><button class="secondary-button" type="button" id="edit-checkout">{t['co_edit']}</button></div><div class="notice-panel"><h3>{t['co_pay_title']}</h3><p>{t['co_pay_text']}</p></div><button class="primary-button" type="button" id="send-preorder">{t['co_pay_btn']}</button><p class="summary-note" id="preorder-result" role="status" hidden data-sent="{t['co_sent']}" data-error="{t['co_err']}"></p></section>
@@ -409,6 +433,12 @@ def build(lang):
   </section>
 </main>'''
     page(lang, 'checkout', t['co_page'], t['co_meta'], checkout)
+
+    privacy = f'''<main id="main" class="shell">
+  <section class="page-intro"><div><h1>{t['pv_title']}</h1><p class="intro-side">{t['pv_draft']}</p></div></section>
+  <section class="legal-text">{''.join(f'<h2>{h}</h2><p>{b}</p>' for h, b in t['pv_body'])}</section>
+</main>'''
+    page(lang, 'privacy', t['pv_title'], t['pv_meta'], privacy)
 
     # Without a top-level 404.html, Cloudflare Pages treats the site as an SPA and answers every unknown URL with the home page.
     not_found = f'''<main id="main" class="shell">

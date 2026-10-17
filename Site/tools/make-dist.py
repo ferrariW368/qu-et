@@ -10,7 +10,7 @@ import re, shutil, sys
 SITE = Path(__file__).resolve().parents[1]
 DIST = SITE.parent / 'dist'
 PAGES = ['index.html', '404.html', 'collection/index.html', 'about/index.html', 'peak/index.html', 'mid-levels/index.html', 'bag/index.html', 'checkout/index.html',
-         'tr/index.html', 'tr/404.html', 'tr/koleksiyon/index.html', 'tr/hakkimizda/index.html', 'tr/peak/index.html', 'tr/mid-levels/index.html', 'tr/sepet/index.html', 'tr/siparis/index.html']
+         'tr/index.html', 'tr/404.html', 'tr/koleksiyon/index.html', 'tr/hakkimizda/index.html', 'tr/peak/index.html', 'tr/mid-levels/index.html', 'tr/sepet/index.html', 'tr/siparis/index.html', 'privacy/index.html', 'tr/kvkk/index.html']
 ALWAYS = ['_headers', 'assets/favicon.svg']
 
 if DIST.exists():

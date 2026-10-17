@@ -637,3 +637,8 @@ svg.footer-wordmark{display:block;width:calc(100% - 2 * var(--gutter));height:au
    empty space with no purpose; one moderate gap is enough. */
 .studio-section,.collection-products{padding-bottom:clamp(40px,5vw,80px)}
 @media(max-width:760px){.site-footer{padding-top:56px}}
+
+/* revU2: privacy notice — plain reading column */
+.legal-text{max-width:680px;padding-bottom:clamp(40px,5vw,80px)}
+.legal-text h2{font-size:18px;margin:36px 0 10px;letter-spacing:.01em}
+.legal-text p{color:var(--muted);font-size:15px;line-height:1.7}

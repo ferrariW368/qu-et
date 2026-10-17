@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#121211">
   <title>Ön sipariş · qu/et</title>
   <link rel="icon" href="/assets/favicon.svg?v=b591c2a0" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/site.css?v=945f0d75">
+  <link rel="stylesheet" href="/assets/site.css?v=13ea79c2">
   <link rel="alternate" hreflang="en" href="/checkout/">
   <link rel="alternate" hreflang="tr" href="/tr/siparis/">
   <link rel="alternate" hreflang="x-default" href="/checkout/">
@@ -33,7 +33,7 @@
       <form class="checkout-form" id="checkout-form" novalidate>
         <fieldset><legend>İletişim</legend><div class="field-grid"><label class="field field-wide">E-posta<input name="email" type="email" autocomplete="email" required maxlength="160"></label><label class="field">Ad<input name="firstName" autocomplete="given-name" required maxlength="60"></label><label class="field">Soyad<input name="lastName" autocomplete="family-name" required maxlength="60"></label></div></fieldset>
         <fieldset><legend>Teslimat adresi</legend><div class="field-grid"><label class="field field-wide">Ülke / Bölge<input name="country" required maxlength="80" autocomplete="country-name"></label><label class="field field-wide">Adres<input name="address" required maxlength="200" autocomplete="street-address"></label><label class="field">Şehir<input name="city" required maxlength="80" autocomplete="address-level2"></label><label class="field">Posta kodu<input name="postal" required maxlength="20" autocomplete="postal-code"></label><label class="field field-wide">Telefon (isteğe bağlı)<input name="phone" type="tel" maxlength="30" autocomplete="tel"></label></div></fieldset>
-        <p class="checkout-preview-note">Ödeme alınmaz. Bilgilerin yalnızca talebi gönderdiğinde iletilir ve sadece bu ön sipariş için kullanılır.</p>
+        <p class="checkout-preview-note">Ödeme alınmaz. Bilgilerin yalnızca talebi gönderdiğinde iletilir ve sadece bu ön sipariş için kullanılır. <a class="text-link" href="/tr/kvkk/">Aydınlatma metni</a></p>
         <button class="primary-button" type="submit" disabled>Bilgileri gözden geçir</button>
       </form>
       <section id="checkout-review" hidden aria-labelledby="review-title" tabindex="-1"><h2 id="review-title">Bilgilerini kontrol et</h2><address class="review-address" id="review-address"></address><div class="review-actions"><button class="secondary-button" type="button" id="edit-checkout">Bilgileri düzenle</button></div><div class="notice-panel"><h3>Ödeme henüz açılmadı.</h3><p>Talebini bırak; ödeme Shopier'in güvenli sayfasında açıldığında sana e-postayla döneceğiz.</p></div><button class="primary-button" type="button" id="send-preorder">Ön sipariş talebini gönder</button><p class="summary-note" id="preorder-result" role="status" hidden data-sent="Talebin alındı. Ödeme açıldığında e-postayla döneceğiz." data-error="Gönderilemedi. Lütfen tekrar dene ya da bize e-postayla yaz."></p></section>
@@ -43,7 +43,7 @@
 </main>
 <footer class="site-footer"><div class="shell">
   <div class="footer-row">
-    <nav class="footer-links" aria-label="Alt menü"><a href="/tr/koleksiyon/">Koleksiyon</a><a href="/tr/hakkimizda/">Hakkında</a><a href="/tr/hakkimizda/#studio">Stüdyo</a><a href="https://www.instagram.com/pinar.ink/" target="_blank" rel="noopener">Instagram</a><a href="mailto:pnar.akdemiir@gmail.com">E-posta</a></nav>
+    <nav class="footer-links" aria-label="Alt menü"><a href="/tr/koleksiyon/">Koleksiyon</a><a href="/tr/hakkimizda/">Hakkında</a><a href="/tr/hakkimizda/#studio">Stüdyo</a><a href="https://www.instagram.com/pinar.ink/" target="_blank" rel="noopener">Instagram</a><a href="mailto:pnar.akdemiir@gmail.com">E-posta</a><a href="/tr/kvkk/">KVKK</a></nav>
     <div class="place-times"><span>İstanbul <time data-clock="Europe/Istanbul"></time></span><span>Hong Kong <time data-clock="Asia/Hong_Kong"></time></span></div>
     <span class="footer-copy">© 2026</span>
   </div>
