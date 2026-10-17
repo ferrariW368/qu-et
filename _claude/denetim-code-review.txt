@@ -1,0 +1,23 @@
+﻿─░nceleme tamamland─▒ ÔÇö dosyalar de─şi┼ştirilmedi, sadece okundu.
+
+## Bulgular (dosya:sat─▒r referansl─▒)
+
+| Dosya:Sat─▒r | Sorun | ├ûnem | D├╝zeltme (tek sat─▒r) |
+|---|---|---|---|
+| `assets/site.js:5-6` Ôåö `tools/make-variants.py:9-10` | Sepet g├Ârsel yolu (`peak-portrait-720.webp`) geni┼şlik de─şerini elle g├Âm├╝yor, `TARGETS` listesinden t├╝retilmiyor | Y├╝ksek | Geni┼şlik de─şerini tek kaynaktan (TARGETS) ├╝retip her iki dosyada da ondan oku, elle kopyalama. |
+| `tools/build-pages.py:8-9` Ôåö `tools/make-variants.py:7-11` | `VARIANTS`/`TARGETS` iki dosyada elle kopya; `peak-tattoo-full` gibi kombinasyon `VARIANTS`'ta yok ÔåÆ `comparison(..., wide=True)` ├ğa─şr─▒l─▒rsa `srcset()` `KeyError` ile build'i k─▒rar | Y├╝ksek | Geni┼şlik/stem tablosunu tek dosyada tutup di─şerine import ettir veya eksik kombinasyon i├ğin build zaman─▒ assert ekle. |
+| `assets/comparison.js:8` Ôåö `tools/build-pages.py:40` | ├£r├╝n ad─▒ `aria-label` string'inden `":"` ile parse ediliyor, isimde ":" ge├ğerse veya format de─şi┼şirse sessizce bozulur | Orta | ├£r├╝n ad─▒n─▒ ayr─▒ `data-comparison-label="{name}"` attribute'una ta┼ş─▒, string parse etme. |
+| `assets/site.js:8` Ôåö `build-pages.py` (t├╝m `page()` ├ğa─şr─▒lar─▒) | `pages` Set'i ├╝retilen HTML dosya adlar─▒n─▒n elle kopyas─▒; yeni sayfa eklenip listeye eklenmezse o sayfada sepet state'i sessizce ta┼ş─▒nmaz | Orta | `pages` listesini build zaman─▒nda JSON olarak ├╝retip site.js'e enjekte et. |
+| `assets/site.js:4-7` Ôåö `build-pages.py:171-174,189` | ├£r├╝n ad─▒/tip/├Ârnek fiyat iki dosyada elle kopyalanm─▒┼ş, biri de─şi┼şince di─şeri unutulabilir | Orta | Tek `products.json` kayna─ş─▒ndan her iki taraf─▒n okumas─▒. |
+| `assets/site.js:167-173` Ôåö `build-pages.py:190` | ├£r├╝n detay sayfas─▒nda adet +/- butonlar─▒ min(1)/max(50) s─▒n─▒r─▒nda `disabled` olmuyor (cart'taki e┼şde─şerinin aksine), kullan─▒c─▒ limitte sessizce t─▒klamaya devam eder | Orta | Cart kontrol├╝ndeki disabled mant─▒─ş─▒n─▒ (sat─▒r 117) ├╝r├╝n detay butonlar─▒na da uygula. |
+| `tools/build-pages.py:22,198` | En-boy oranlar─▒ (`1672x941`, `960x1200` vb.) kaynak g├Ârsellerden hesaplanm─▒yor, elle yaz─▒lm─▒┼ş sihirli say─▒, birden fazla yerde tekrarl─▒ | Orta | Ger├ğek dosya boyutundan (Pillow) tek yerden t├╝ret; master g├Ârsel de─şi┼şince width/height CLS riskiyle yanl─▒┼ş kal─▒r. |
+| `assets/comparison.js:7-8` | `querySelector` sonucu (`toggle`/`range`) null-check'siz kullan─▒l─▒yor; `[data-comparison]` blo─şu bozuksa `TypeError` t├╝m d├Âng├╝y├╝ (t├╝m sahneleri) patlat─▒r | D├╝┼ş├╝k | `if (!toggle || !range) continue;` korumas─▒ ekle. |
+| `assets/site.js:54-58` | `transported.at >= state.at` ile `inTab.at > state.at` aras─▒ e┼şitlik asimetrisi ÔÇö ayn─▒ `at` de─şerinde hangi state'in kazanaca─ş─▒ tutars─▒z | D├╝┼ş├╝k | ─░ki kar┼ş─▒la┼şt─▒rmay─▒ da ayn─▒ operat├Âre (`>` ├Ânerilir) e┼şitle. |
+
+## ├£retici / ├çal─▒┼şma zaman─▒ ayr─▒m─▒
+
+- **├£retici (`build-pages.py`, `make-variants.py`)**: VARIANTS/TARGETS duplikasyonu, eksik `peak-tattoo-full` kombinasyonu, en-boy oran─▒ sihirli say─▒lar─▒, ├╝r├╝n verisi duplikasyonunun kayna─ş─▒.
+- **├çal─▒┼şma zaman─▒ (`site.js`, `comparison.js`)**: `pages` Set bak─▒m─▒, sabit `-720` g├Ârsel yolu, `aria-label` parse ba─ş─▒ml─▒l─▒─ş─▒, disabled mant─▒─ş─▒ eksikli─şi, null-check eksikli─şi, state-merge e┼şitlik asimetrisi.
+
+Not: XSS veya tehlikeli URL-parametresi kullan─▒m─▒ (├Ârn. `innerHTML`, `eval`, sanitize edilmemi┼ş `location.search/hash` render'─▒) tespit edilmedi ÔÇö bu iki dosya DOM'a kullan─▒c─▒ girdisi enjekte etmiyor.
+BITTI

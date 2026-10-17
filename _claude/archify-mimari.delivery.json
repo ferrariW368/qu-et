@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "59620957-f88b-4ec9-841a-61fc18a899eb",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\FERRARI\\01_GARAGE\\01_ACTIVE_PROJECTS\\qu.et\\_claude\\archify_work\\candidate.json",
+  "output": "C:\\FERRARI\\01_GARAGE\\01_ACTIVE_PROJECTS\\qu.et\\_claude\\archify-mimari.html",
+  "specification": {
+    "sha256": "1a74a1dd26fec9168845240fe9856288863c93d1ea483878619a1ad9b8764bc6",
+    "bytes": 6472
+  },
+  "artifact": {
+    "sha256": "c382e59e1e84584f009c7c95f67a394f3dd1b6c607691f6bd003622627e65ea2",
+    "bytes": 844009
+  }
+}

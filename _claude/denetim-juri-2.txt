@@ -1,0 +1,6 @@
+﻿Dosya h├ól├ó kilitli (muhtemelen bir edit├Ârde/Explorer'da a├ğ─▒k). Bu nedenle ├ğ─▒kt─▒y─▒ `denetim-juri-2.txt` yerine `denetim-juri-2b.txt` dosyas─▒na yazd─▒m ÔÇö t├╝m de─şerlendirme burada tam ve eksiksiz:
+
+`C:\FERRARI\01_GARAGE\01_ACTIVE_PROJECTS\qu.et\_claude\denetim-juri-2b.txt`
+
+Orijinal `denetim-juri-2.txt` dosyas─▒n─▒ a├ğ─▒k tutan program─▒ (edit├Âr, Explorer ├Ânizleme vb.) kapat─▒rsan─▒z, dosyay─▒ yeniden adland─▒rabilir ya da ben tekrar deneyebilirim ÔÇö haber verin.
+BITTI

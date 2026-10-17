@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\FERRARI\\01_GARAGE\\01_ACTIVE_PROJECTS\\qu.et\\_claude\\archify_work\\candidate.json",
+    "sha256": "746f65c8acd08808b776dc184596b533e4755041abdeb29011a95b5053ec8e28",
+    "bytes": 6587
+  },
+  "artifact": {
+    "path": "C:\\FERRARI\\01_GARAGE\\01_ACTIVE_PROJECTS\\qu.et\\_claude\\archify-mimari.html",
+    "sha256": "be2a343f0c388040446939f44167065b50bb3718c47d518700cd83a269ce90f6",
+    "bytes": 844217
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\FERRARI\\01_GARAGE\\01_ACTIVE_PROJECTS\\qu.et\\_claude\\archify-mimari.finalize.json",
+    "summaryReceipt": "C:\\FERRARI\\01_GARAGE\\01_ACTIVE_PROJECTS\\qu.et\\_claude\\archify-mimari.finalize-summary.json",
+    "browserCheckReceipt": "C:\\FERRARI\\01_GARAGE\\01_ACTIVE_PROJECTS\\qu.et\\_claude\\archify-mimari.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.1.0",
+    "availableVersion": "3.1.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-16T00:47:30.543Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 5914,
+  "visualReviewRecommendation": {
+    "action": "inspect-route-readability",
+    "signals": {
+      "routesOverSuggestedBends": 2,
+      "routesOverSuggestedStretch": 2
+    },
+    "reason": "Automated gates passed, but crossings or detours still need perceptual review before claiming visual quality.",
+    "affectedRoutes": {
+      "crossings": [],
+      "detours": [
+        {
+          "relationship": {
+            "id": "test-pages",
+            "from": "check_site",
+            "to": "pages",
+            "label": "test eder (jsdom)",
+            "collectionIndex": 1,
+            "artifactIndex": 2
+          },
+          "bends": 4,
+          "stretch": 1.39
+        },
+        {
+          "relationship": {
+            "id": "liquid-pages",
+            "from": "liquid_js",
+            "to": "pages",
+            "label": "yalnız ana sayfa",
+            "collectionIndex": 2,
+            "artifactIndex": 3
+          },
+          "bends": 4,
+          "stretch": 9.141
+        }
+      ],
+      "truncated": false
+    },
+    "hints": [
+      "check_site → pages needs 4 bends: move node check_site or pages so they share a row or column with matching centers, or sit diagonally with a clear corner.",
+      "liquid_js → pages needs 4 bends: move node liquid_js or pages so they share a row or column with matching centers, or sit diagonally with a clear corner."
+    ],
+    "repair": "Trace these relationships at the desktop viewport. For Architecture, use references/architecture-layout-repair.md: reflow a blocked main path or tangled connected scene, and repair an isolated defect locally only when the surrounding composition is accepted. Preserve all semantic content and user-fixed geometry. Rerun finalize once after the edit."
+  }
+}

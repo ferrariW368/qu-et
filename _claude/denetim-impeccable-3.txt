@@ -1,0 +1,22 @@
+﻿## 1) RevAB De─şi┼şiklikleri Do─şru mu?
+
+Mant─▒k olarak ├ğo─şu do─şru ├ğal─▒┼ş─▒yor:
+
+- **Form + hata metni** (`site.css:344-348`): `aria-describedby` ba─şlant─▒s─▒ `site.js:262-282`'de do─şru kuruluyor, kontrast oranlar─▒ yeterli (Ôëê6.9:1 ve 8.9:1, WCAG e┼şiklerinin ├╝st├╝nde).
+- **Sepet ├ğekmecesi ge├ği┼şi** (`site.css:353-359`): `@starting-style` + `allow-discrete` kombinasyonu teknik olarak do─şru; desteklemeyen taray─▒c─▒larda (Firefox <129) ge├ği┼şsiz ama k─▒r─▒lmadan ├ğal─▒┼ş─▒r ÔÇö kabul edilebilir a┼şamal─▒ iyile┼ştirme.
+- **Transform tabanl─▒ kar┼ş─▒la┼şt─▒rma** (`site.css:262-266`): wrapper +18px / g├Ârsel -18px ters ├Âteleme matemati─şi tutarl─▒, reveal=100%'de net s─▒f─▒rlan─▒yor. Mant─▒k do─şru ama a┼şa─ş─▒daki g├Ârsel yan etkisi var (bkz. tablo #6).
+- **Hover ge├ği┼şleri `pointer:fine`** (`site.css:369-375`): do─şru medya sorgusu, dokunmatikte sticky-hover riski ger├ğekten engelleniyor.
+
+Ancak **"CSP" iddias─▒ do─şrulanamad─▒** ÔÇö okunan 3 dosyada hi├ğbir Content-Security-Policy header/meta/yorum yok (bkz. tablo #1).
+
+## 2) En ├ûnemli 6 Bulgu
+
+| # | Dosya:Sat─▒r | Bulgu | D├╝zeltme |
+|---|---|---|---|
+| 1 | tools/build-pages.py:101-125 | revAB kapsam─▒nda "CSP" yap─▒ld─▒─ş─▒ belirtiliyor ama `page()` fonksiyonunun `<head>` blo─şunda ne CSP meta tag'i ne de ilgili yorum var; site.css/site.js'de de yok. ─░ddia edilen de─şi┼şiklik mevcut de─şil. | `<meta http-equiv="Content-Security-Policy" content="...">` ekle veya statik host seviyesinde header ayarla; yoksa claim'i d├╝zelt. |
+| 2 | assets/site.css:334 | 44px dokunma alan─▒ d├╝zeltmesi sadece `max-width:760px` sorgusunda; b├╝y├╝k touch tabletler (├Ârn. 1024px geni┼şlikte iPad) bu aral─▒─ş─▒n d─▒┼ş─▒nda kald─▒─ş─▒ i├ğin `.comparison-controls button` k├╝├ğ├╝k dokunma alan─▒nda kal─▒yor. Ayn─▒ revAB'deki hover d├╝zeltmesi (`pointer:fine`, sat─▒r 369) do─şru y├Ântemi kullan─▒rken burada viewport geni┼şli─şi baz al─▒nm─▒┼ş ÔÇö tutars─▒z yakla┼ş─▒m. | Breakpoint yerine `@media(pointer:coarse)` kullan, b├Âylece b├╝y├╝k dokunmatik ekranlar da kapsans─▒n. |
+| 3 | assets/site.css:349-350 | `.remove-item` ve `.quantity-control button` 24px y├╝ksekli─şe sabitlenmi┼ş ÔÇö WCAG 2.5.8'in mutlak minimumu, ama tekrar t─▒klanan adet steper'─▒ i├ğin dar. Ayn─▒ revAB'de slider thumb 24px'e, buton ise 44px'e ├ğ─▒kar─▒lm─▒┼şken (sat─▒r 334, 351-352) bu ikisi 24px'de kalm─▒┼ş; dokunma alan─▒ hedefleri grup i├ğinde tutars─▒z. | 24px'i en az 32-36px'e ├ğ─▒kar; sepette tekrarl─▒ dokunma olan kontrollerde 44px standard─▒na uy. |
+| 4 | tools/build-pages.py:187 | `data-gallery-srcset` de─şeri elle (`-720.webp 720w, .webp 960w`) yaz─▒lm─▒┼ş; dosyan─▒n ba┼ş─▒ndaki `srcset()` fonksiyonu (sat─▒r 10-11 yorum: "bu tablo asla g├Ârsellerden kaymaz") tam da bu kaymay─▒ ├Ânlemek i├ğin var ama galeri thumb'─▒nda kullan─▒lmam─▒┼ş. `-720` varyant─▒ silinir/yeniden adland─▒r─▒l─▒rsa bu sat─▒r fark edilmeden k─▒r─▒k kal─▒r. | `data-gallery-srcset="{srcset(f"{p['id']}-portrait", 'portrait')[8:-1*len(SIZES-kismi)]}"` gibi `srcset()` ├ğ─▒k─▒┼ş─▒ndan t├╝ret, elle yazma. |
+| 5 | assets/site.css:1-20 | ├£├ğ `@font-face` (Jost 200/300/400, woff2) tan─▒ml─▒ ama hi├ğbiri preload edilmiyor; oysa ayn─▒ sayfan─▒n hero g├Ârseli `tools/build-pages.py:151`'de a├ğ─▒k├ğa preload ediliyor. Hero wordmark bu fontu kulland─▒─ş─▒ i├ğin ├╝st katlanmada (above-the-fold) FOUT/fla┼ş riski var ÔÇö perf odakl─▒ revAB kapsam─▒nda tutars─▒z ├Ânceliklendirme. | En az─▒ndan ana sayfada kullan─▒lan a─ş─▒rl─▒k (muhtemelen 300 veya 400) i├ğin `<link rel="preload" as="font" type="font/woff2" crossorigin>` ekle. |
+| 6 | assets/site.css:263, 313, 321 | T├╝y gibi kenar (feather) geni┼şli─şi `36px` sabit piksel olarak maskelenmi┼ş, ama `.comparison-surface` aspect-ratio masa├╝st├╝nde `4/5`, mobilde `1.2`'ye de─şi┼şiyor (sat─▒r 313/321). Sabit 36px, k├╝├ğ├╝k mobil konteynerde orana g├Âre ├ğok daha kal─▒n/belirgin g├Âr├╝n├╝r, b├╝y├╝k masa├╝st├╝ g├Ârsellerde ise orant─▒s─▒z ince kal─▒r ÔÇö "transform tabanl─▒ kar┼ş─▒la┼şt─▒rma" de─şi┼şikli─şinin beklenmeyen g├Ârsel yan etkisi. | 36px de─şerini `clamp()` ile konteyner geni┼şli─şine g├Âreli yap (├Ârn. `calc(100% - clamp(16px,4%,36px))`) ya da mobil breakpoint'e ├Âzel daha k├╝├ğ├╝k bir feather de─şeri tan─▒mla. |
+BITTI

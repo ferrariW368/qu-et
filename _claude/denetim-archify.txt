@@ -1,0 +1,7 @@
+﻿Diyagram olu┼şturuldu: [qu/et Statik Site Mimarisi](C:/FERRARI/01_GARAGE/01_ACTIVE_PROJECTS/qu.et/_claude/archify-mimari.html)
+
+**├ûzet:**
+- build-pages.py ÔåÆ 8 HTML sayfa; site.js (localStorage + URL `?bag` + `window.name` ├╝├ğl├╝ senkronizasyon), comparison.js, liquid-metal-button.js (yaln─▒z ana sayfa) ve check-site.cjs test harness kan─▒ta dayal─▒ olarak haritaland─▒; ├Ân sipari┼ş ak─▒┼ş─▒ ├╝r├╝nÔåÆ├ğekmeceÔåÆsepetÔåÆsipari┼şÔåÆkontrolÔåÆ├Âdeme(kapal─▒) tek ana yol olarak ├ğizildi.
+- Otomatik do─şrulama (validate/deliver/check/browser-check) ge├ğti; ara├ğ yaln─▒zca baz─▒ kenarlarda kozmetik ekstra k─▒vr─▒m (bend) ├Âneriyor ÔÇö g├Ârsel olarak incelenmedi, yaln─▒zca otomatik kontroller do─şruland─▒.
+- Repo'da git ge├ğmi┼şi olmad─▒─ş─▒ i├ğin dosya/sat─▒r kan─▒tlar─▒ node sublabel'leri ve kartlarda metin olarak tutuldu (t─▒klanabilir kaynak ba─şlant─▒s─▒ yok); Site klas├Âr├╝ndeki hi├ğbir dosyaya dokunulmad─▒.
+BITTI

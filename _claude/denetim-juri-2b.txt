@@ -1,0 +1,57 @@
+qu/et — Bağımsız Jüri Değerlendirmesi #2
+================================================
+
+1) PUAN TABLOSU (10 üzerinden)
+
+| Site                      | Tasarım | Kullanılabilirlik | Yaratıcılık | İçerik | Ağırlıklı Ort. (40/30/20/10) |
+|---------------------------|:-------:|:------------------:|:-----------:|:------:|:-----------------------------:|
+| qu/et ANA SAYFA           | 7.6     | 7.0                | 6.8         | 5.0    | 6.98                           |
+| qu/et TÜM SİTE            | 7.2     | 7.3                | 6.3         | 4.8    | 6.81                           |
+| Sophie Buhai              | 8.4     | 7.8                | 8.0         | 7.5    | 8.03                           |
+| Tom Wood                  | 8.0     | 8.2                | 7.0         | 7.8    | 7.84                           |
+| Charlotte Chesnais        | 7.0     | 6.8                | 6.5         | 6.8    | 6.87                           |
+
+qu/et tüm site, Charlotte Chesnais'yi ağırlıklı ortalamada hafif geçiyor — ama onun karmaşık nav/cookie/subscribe yığınına kıyasla bu düşük bar. Sophie Buhai ve Tom Wood'a tasarım disiplininde yakın, içerik derinliğinde (ürün sayısı, gerçek fotoğraf, varyant seçenekleri) açık ara geride.
+
+2) SAYFA SAYFA NOTLAR
+
+| Sayfa        | Not                                                                                   | Puan |
+|--------------|----------------------------------------------------------------------------------------|:----:|
+| Ana sayfa    | Mimari kadraj → Hong Kong portresi geçişi güçlü, ama "Hong Kong" tek şehir vurgusu hemen tekrarlanıyor (hero + 2. blok) | 7.6  |
+| Koleksiyon   | Tek kayan görsel + ten/gümüş slider iyi fikir ama 2 ürünlük koleksiyon için sayfa boş hissettiriyor | 7.0  |
+| Ürün (Peak)  | Metin-ürün bağı (Victoria Peak hikâyesi) en güçlü içerik anı; ama tek görsel + galeri yok | 7.4  |
+| Hakkımızda   | Marka hikâyesi 3 kısa paragrafa sığdırılmış, Pınar'a dair somut hiçbir şey yok (fotoğraf, isim soyadı, atölye görüntüsü) | 6.0  |
+| Sepet        | Temiz boş durum ama tasarımı diğer sayfalarla birebir aynı, "boş sepet" anının kendine özgü bir karşılığı yok | 6.8  |
+
+3) EN BÜYÜK 6 EKSİK (önem sırasıyla)
+
+1. **Ürün sayısı/derinlik azlığı** — Sorun: Koleksiyon tek ekranda bitiyor, 2 ürün var, varyant/malzeme seçeneği yok. Referans: tomwood-home.jpg ve charlottechesnais-home.jpg çok katmanlı kategori yapısı (Bridal/Fine Jewellery/Jewellery/Style it/Objects) sunuyor, az sayıda ürünle bile "koleksiyon" hissi veriyor çünkü editorial + ürün + lifestyle görseli dönüşümlü geliyor. Öneri: Hong Kong koleksiyonunu tek sayfa yerine en az 4-5 görsel anıyla (detay çekimi, giyilmiş hâl, malzeme makro, paket) zenginleştir; "limited edition — sadece 2 parça" mesajını bilinçli bir sınırlılık olarak öne çıkar, boşluk olarak değil.
+2. **Ürün sayfasında galeri yok** — Sorun: Peak/Mid-Levels sayfalarında tek büyük görsel + "Takılı görünüm / Detay" sekmesi var ama gerçek bir thumbnail galerisi yok. Referans: sophiebuhai-product.jpg ve charlottechesnais-product.jpg sol altta küçük resim şeridi (thumbnail strip) kullanıyor, kullanıcı açıyı/detayı kendi seçiyor. Öneri: Sol tarafa en az 3-4 küçük resimlik dikey/yatay galeri ekle (ürün detay, farklı açı, ölçek referansı).
+3. **"Hakkımızda" sayfası marka kimliğini insani kılmıyor** — Sorun: Pınar isimle anılıyor ama yüzü, atölyesi, gerçek bir dövme çizimi örneği yok; metin jenerik kalıyor. Referans: sophiebuhai-home.jpg'de tasarımcının kendi portresi hero'da, tomwood-home.jpg'de gerçek insanlar/kampanya anlatıyor. Öneri: Pınar'ın gerçek bir dövme eskizi taranmış görseli + atölye/stüdyo fotoğrafı (yapay zekâ değil, otantik) ekle; bu marka hikâyesinin en özgün varlık noktası, şu an israf ediliyor.
+4. **Fiyat/ürün bilgisi minimal, satın alma güvenini desteklemiyor** — Sorun: "Örnek fiyat" etiketi belirsizlik yaratıyor, malzeme detayı (gümüş ayarı, üretim yeri, bakım) yok. Referans: tomwood-product.jpg "925 sterling silver", "Recycled precious metals", "Responsibility" gibi akordeon detaylar sunuyor; charlottechesnais-product.jpg madde madde malzeme/üretim bilgisi veriyor. Öneri: "Ölçü" ve "Ön sipariş ve teslim" akordeonlarının yanına "Malzeme" ve "Bakım" bölümü ekle; "örnek fiyat" yerine net fiyat ya da neden örnek olduğunu açıklayan tek satır.
+5. **Navigasyon ve bilgi mimarisi sığ** — Sorun: Sadece Koleksiyon / Hakkında / Stüdyo / Instagram / E-posta var; kategori, dünya görüşü (malzeme, sürdürülebilirlik, basın) sayfaları yok. Referans: charlottechesnais-home.jpg'de Bridal/Fine Jewellery/Jewellery/Style it/Objects/About ayrımı marka evrenini genişletiyor. Öneri: Şu an erken aşama için 5 link az değil, ama "Stüdyo" linkinin gittiği içerik Hakkımızda ile neredeyse birebir aynı — ayrı bir Stüdyo/Press sayfası ya da bu linki kaldırıp Hakkımızda'yı derinleştirmek daha dürüst.
+6. **Ürün sayfasında sosyal kanıt/bağlam yok** — Sorun: Değerlendirme, stok durumu, "kaç kişi ön sipariş verdi" gibi hiçbir sosyal ipucu yok (limited edition ürün için beklenen bir FOMO mekaniği eksik). Referans: Hiçbir referans sitede agresif sosyal kanıt yok (hepsi sessiz/lüks tonda), bu yüzden bu zaten qu/et'in doğru kararı — ama "limited edition" vurgusu (örn. "02 tasarım" etiketi dışında kaç adet üretileceği) net değil. Öneri: "Limited edition" iddiasını somutlaştır — üretim adedi, numaralandırma, ya da "yalnızca Hong Kong lansmanında" gibi bir çizgi.
+
+Not: Gerçek fotoğraf eksikliği ayrı ve en kritik madde — ürünler cilalı ama "yapay zekâ pürüzsüzlüğü" taşıyor (ciltte doku var ama ışık/gölge fiziksel çekimden ayırt edilebilir düzeyde temiz); Awwwards jürisi bunu saniyeler içinde fark eder ve lüks/el işi iddiasıyla çelişir. Lansmana kadar en az hero + ürün close-up'larının gerçek stüdyo çekimiyle değiştirilmesi şart.
+
+4) ÖDÜL DÜZEYİ TAHMİNİ
+
+Honorable Mention için eksik 3 madde:
+- Ürün sayfası galerisi ve malzeme/bakım bilgisi derinliği (madde 2, 4).
+- Hakkımızda sayfasının somut, insani kanıtla desteklenmesi (madde 3).
+- Görsellerin yapay zekâdan gerçek stüdyo çekimine geçmesi — jüri incelemesinde en çok cezalandırılacak nokta.
+
+Site of the Day için ek olarak:
+- Tipografi/boşluk disiplini zaten güçlü, ama "yaratıcılık" ekseninde özgün bir etkileşim anı yok (micro-interaction, scroll-triggered detay, custom cursor vb. — hiçbiri yok, "süs animasyonu yok" ilkesiyle çelişmeden de yapılabilir, örn. ürün görseli hover'da hafif parallax).
+- Koleksiyon büyümeden (3. şehir, 3. ürün grubu) "kalıcı marka" hissi zayıf; jüri tek seferlik proje izlenimine kapılabilir.
+
+5) LANSMANA HAZIRLIK YÜZDE TAHMİNİ
+
+| Alan            | Hazırlık |
+|------------------|:--------:|
+| Masaüstü tasarım | %80      |
+| Mobil            | %55 (ekran görüntüsü yok, responsive davranış doğrulanamadı — site.css/build-pages.py okunarak teyit edilmeli) |
+| İçerik           | %50 (2 ürün, kısa marka metni, gerçek görsel yok) |
+| Ödeme            | %15 (8 Kasım'a kadar bilinçli olarak kapalı; ön sipariş akışı UI'de var ama ödeme entegrasyonu yok) |
+
+BITTI

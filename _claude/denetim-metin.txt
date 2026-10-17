@@ -1,0 +1,51 @@
+﻿**Impeccable ÔåÆ distill + clarify uyguland─▒.** Karar mant─▒─ş─▒: distill = tekrar─▒ ve s─▒f─▒r-karar-de─şeri olan bilgiyi at; clarify = kalan metnin tek, net bir i┼şlevi olsun. G├Ârsel zaten s├Âyl├╝yorsa metin susar.
+
+## qu-et-home-masaustu.html
+| Metin | Karar | Yeni hali | Gerek├ğe |
+|---|---|---|---|
+| K├╝pe, g├╝m├╝┼şte | KISALT | K├╝pe | G├╝m├╝┼ş tek malzeme ÔÇö g├Ârsel s├Âyl├╝yor, tekrar gereksiz |
+| Y├╝z├╝k, g├╝m├╝┼şte | KISALT | Y├╝z├╝k | Ayn─▒ gerek├ğe |
+| *(di─şer 8 ├Â─şe)* | KALSIN | ÔÇö | Sahne ad─▒, CTA ve at─▒f zaten minimal |
+
+## koleksiyon.html
+| Metin | Karar | Yeni hali | Gerek├ğe |
+|---|---|---|---|
+| ─░ki tasar─▒m, her biri 50 adet. | KISALT | S─▒n─▒rl─▒ ├╝retim. | Say─▒ karar─▒ de─şi┼ştirmiyor; sahibin talebi |
+| ├ûn sipari┼şler lansmanla birlikte a├ğ─▒l─▒yor. | S─░L | ÔÇö | ├£st├╝ndeki sat─▒r zaten tarihi veriyor, tekrar |
+| *(di─şer 8 ├Â─şe)* | KALSIN | ÔÇö | ÔÇö |
+
+## peak.html
+| Metin | Karar | Yeni hali | Gerek├ğe |
+|---|---|---|---|
+| Tak─▒l─▒ / G├╝m├╝┼ş / ├ûnce tende (3 figcaption) | S─░L | ÔÇö | G├Ârsel zaten g├Âsteriyor ÔÇö sahibin talebi |
+| 50 adetlik s─▒n─▒rl─▒ seri | KISALT | S─▒n─▒rl─▒ seri | Say─▒ al─▒c─▒ karar─▒n─▒ de─şi┼ştirmiyor |
+| ├ûn sipari┼şler lansmanla birlikte a├ğ─▒l─▒yor. | S─░L | ÔÇö | price-meta'da tarih zaten var, tekrar |
+| Ke┼şfet (alt CTA) | S─░L | ÔÇö | "Mid-Levels" linki zaten t─▒klanabilir, ikinci CTA gereksiz |
+| ├ûrnek fiyat / ├ûn sipari┼ş┬À8 Kas─▒m 2026 / Sepete ekle / Malzeme / ├ûl├ğ├╝ / ├ûn sipari┼ş ve teslim metinleri | **ZORUNLU** ÔÇö KALSIN | ÔÇö | ├ûdeme kapal─▒ uyar─▒s─▒ + i┼şlevsel form; kald─▒r─▒lamaz |
+| *(di─şer 15 ├Â─şe)* | KALSIN | ÔÇö | ├£r├╝n hik├óyesi, isim, geri linki ÔÇö tekil ve gerekli |
+
+## mid-levels.html
+Peak.html ile ayn─▒ desen ÔÇö ayn─▒ 3 figcaption S─░L, "50 adetlik s─▒n─▒rl─▒ seri" ÔåÆ **S─▒n─▒rl─▒ seri**, launch-caption S─░L, alt "Ke┼şfet" S─░L. Fiyat/├Ân sipari┼ş/form metinleri **ZORUNLU, KALSIN**. Di─şer 15 ├Â─şe KALSIN.
+
+## hakkimizda.html
+| Metin | Karar | Yeni hali | Gerek├ğe |
+|---|---|---|---|
+| Hong Kong, 15 ├ğizim | KISALT | Hong Kong ├ğizimleri | "15" kimseye karar bilgisi vermiyor ÔÇö sahibin talebi |
+| *(di─şer 8 ├Â─şe)* | KALSIN | ÔÇö | "Less to see / More to feel", st├╝dyo bilgisi zaten tekil |
+
+## sepet.html
+| Metin | Karar | Yeni hali | Gerek├ğe |
+|---|---|---|---|
+| T├╝m 21 ├Â─şe | KALSIN | ÔÇö | Her sat─▒r tekil i┼şlev ta┼ş─▒yor (miktar, fiyat, kald─▒r, ├Âzet) |
+| ├ûn sipari┼şler 8 Kas─▒m'da a├ğ─▒l─▒yor... ├Âdeme al─▒nmaz ve sipari┼ş olu┼şturulmaz. | **ZORUNLU ÔÇö KALSIN** | ÔÇö | ├ûdeme kapal─▒ uyar─▒s─▒, yasal/beklenti y├Ânetimi |
+
+## siparis.html
+| Metin | Karar | Yeni hali | Gerek├ğe |
+|---|---|---|---|
+| T├╝m 27 ├Â─şe | KALSIN | ÔÇö | Form etiketleri, ad─▒m g├Âstergesi, fiyat ├Âzeti ÔÇö tekrar yok |
+| E-posta/Ad/Soyad/Adres alanlar─▒, "Tasar─▒m ├Ânizlemesi..." notu, "G├Âsterilen EUR fiyatlar─▒..." notu | **ZORUNLU ÔÇö KALSIN** | ÔÇö | Form etiketi + ├Âdeme/veri i┼şlenmedi─şi uyar─▒s─▒, kald─▒r─▒lamaz |
+
+---
+
+**Toplam metin ├Â─şesi: ├Ânce 127 ÔåÆ sonra 116** (11 S─░L, 6 KISALT, kalan 110 de─şi┼şmeden). Zorunlu (yasal/i┼şlevsel) i┼şaretlenen ├Â─şeler her sayfada ayr─▒ca belirtildi, bunlara dokunulmad─▒.
+BITTI

@@ -1,0 +1,17 @@
+Sen bağımsız bir Awwwards jürisisin. Bu siteyi daha önce görmedin. Türkçe yaz. Site dosyalarına DOKUNMA, yalnız oku.
+
+Değerlendirilecek site: qu/et — dövme sanatçısı Pınar'ın çizimlerinden doğan, sınırlı sayıda (limited edition) gümüş takı markası. Hong Kong koleksiyonu: Peak (küpe), Mid-Levels (yüzük). İlkeler: sade, minimal, görsel odaklı, az metin, süs animasyonu yok. Görseller şimdilik yapay zekâ üretimi. Ödeme kapalı (8 Kasım ön sipariş).
+
+qu/et ekran görüntüleri (1440 px tam sayfa): C:\FERRARI\01_GARAGE\01_ACTIVE_PROJECTS\qu.et\_claude\shots\juri2-*.jpg (ana sayfa, koleksiyon, peak, mid-levels, hakkimizda, sepet).
+Referans siteler: C:\FERRARI\01_GARAGE\01_ACTIVE_PROJECTS\qu.et\_claude\referans\*-home.jpg ve *-product.jpg (Tom Wood, Sophie Buhai, Charlotte Chesnais, Kinn, ORE, Sarah & Sebastian, Completed Works, Coutumes, Aroz, Juri, Limnia).
+İstersen kaynak kodu da okuyabilirsin: C:\FERRARI\01_GARAGE\01_ACTIVE_PROJECTS\qu.et\Site (assets/site.css, tools/build-pages.py). Impeccable skill'i varsa ölçütlerini kullan.
+
+Çıktıyı şu dosyaya yaz: C:\FERRARI\01_GARAGE\01_ACTIVE_PROJECTS\qu.et\_claude\denetim-juri-2.txt
+
+Biçim (kısa tut, toplam 70 satırı geçme):
+1) Awwwards puan tablosu (10 üzerinden, ondalık serbest): Tasarım, Kullanılabilirlik, Yaratıcılık, İçerik. Satırlar: qu/et ANA SAYFA, qu/et TÜM SİTE, en yakın 3 referans (Sophie Buhai, Tom Wood, Charlotte Chesnais). Awwwards ağırlıklı ortalaması da (Tasarım %40, Kullanılabilirlik %30, Yaratıcılık %20, İçerik %10).
+2) Sayfa sayfa tek satır not (ana sayfa, koleksiyon, ürün, hakkımızda, sepet) + 10 üzerinden puan.
+3) En büyük 6 eksik, önem sırasıyla; her biri: sorun, hangi referans nasıl çözüyor (dosya adı), somut öneri. Gerçek fotoğraf eksikliğini ayrı tek madde say, diğer maddeleri onunla doldurma.
+4) Ödül düzeyi tahmini: Honorable Mention / Site of the Day için ne eksik (3 madde).
+5) Lansmana hazırlık: masaüstü tasarım, mobil, içerik, ödeme için yüzde tahmini.
+Son satıra BITTI yaz.

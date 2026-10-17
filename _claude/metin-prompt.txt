@@ -1,0 +1,13 @@
+Sen sessiz, lüks markalar için çalışan kıdemli bir UX yazarı ve editörsün. Türkçe yaz. Dosya yazma; cevabını doğrudan çıktı olarak ver. Varsa Impeccable skill'inin "distill" ve "clarify" ölçütlerini kullan.
+
+Marka: qu/et — dövme sanatçısı Pınar'ın çizimlerinden doğan, sınırlı üretim gümüş takı. Kural: görsel konuşur, metin minimum. Görselin zaten söylediğini metin tekrar etmez. Sayılar ve açıklamalar ancak alıcının kararına gerçekten yarıyorsa kalır. Ödeme şimdilik kapalı (ön sipariş 8 Kasım 2026), fiyatlar örnek.
+
+Sitedeki tüm görünür metinler: C:\FERRARI\01_GARAGE\01_ACTIVE_PROJECTS\qu.et\_claude\metin-envanteri.md
+Ekran görüntüleri (gerekirse): C:\FERRARI\01_GARAGE\01_ACTIVE_PROJECTS\qu.et\_claude\shots\juri2-*.jpg ve mob-*.jpg
+
+Site sahibinin geri bildirimi: ürün görsellerinin altındaki "Takılı / Gümüş / Önce tende" gereksiz; "İki tasarım, her biri 50 adet" yerine sadece "Sınırlı üretim" gibi tek ifade; "Hong Kong, 15 çizim" gibi sayılar kimseye bir şey ifade etmiyor; fazlalık her yazı çıkmalı; sepet de incelenmeli.
+
+Çıktı biçimi (en fazla 60 satır):
+Her sayfa için bir tablo: | Metin | Karar (SİL / KISALT / KALSIN) | Yeni hali | Tek satır gerekçe |
+Yasal ya da işlev için zorunlu olanları (ör. ödeme alınmadığı uyarısı, form etiketleri) ayrıca işaretle.
+En sonda: toplam metin öğesi önce/sonra sayısı.

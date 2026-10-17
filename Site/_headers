@@ -1,0 +1,18 @@
+# Security headers for static hosting (Cloudflare Pages / Netlify format).
+# Verified locally with _claude/qa/serve-with-headers.py + browser-check (0 CSP violations).
+# X-Robots-Tag: demo phase (sample prices, AI images) keeps search engines out. REMOVE it when the real domain goes live (SİTE 09).
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cross-Origin-Opener-Policy: same-origin
+  X-Robots-Tag: noindex, nofollow
+
+# Filenames are not content-hashed, so CSS/JS/images keep a short cache; fonts never change.
+/assets/*
+  Cache-Control: public, max-age=3600
+
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

@@ -1,0 +1,53 @@
+﻿**Y├Ântem notu:** Statik ekran g├Âr├╝nt├╝s├╝ kar┼ş─▒la┼şt─▒rmas─▒ (canl─▒ site/DOM yok, detector uygulanamaz) ÔÇö tek-ba─şlaml─▒ g├Ârsel de─şerlendirme. Site dosyalar─▒na dokunulmad─▒.
+
+## 1) Awwwards Puanlama
+
+En yak─▒n 3 referans: **Sophie Buhai**, **Tom Wood**, **Charlotte Chesnais** (koyu/sessiz, editoryal, g├╝m├╝┼ş/metal odakl─▒ ÔÇö qu/et'e en yak─▒n ruh hali).
+
+| | Tasar─▒m | Kullan─▒labilirlik | Yarat─▒c─▒l─▒k | ─░├ğerik |
+|---|---|---|---|---|
+| **qu/et** | 7 | 5 | 8 | 6 |
+| Sophie Buhai | 9 | 7 | 8 | 7 |
+| Tom Wood | 8 | 8 | 7 | 7 |
+| Charlotte Chesnais | 8 | 7 | 8 | 6 |
+
+qu/et'in en g├╝├ğl├╝ yan─▒ yarat─▒c─▒l─▒k (mimari ─▒┼ş─▒k/g├Âlge a├ğ─▒l─▒┼ş─▒, d├Âvme-├ğizim konsepti); en zay─▒f yan─▒ kullan─▒labilirlik (navigasyon, ├╝r├╝n bilgisi, CTA netli─şi).
+
+## 2) En B├╝y├╝k 6 Eksik (├Ânem s─▒ras─▒yla)
+
+**1. Hong Kong band─▒ ile Peak sahnesinde ayn─▒ poz/ayn─▒ kad─▒n tekrar─▒**
+Marka hik├óyesi "farkl─▒ ┼şehir, farkl─▒ par├ğa" vaat ediyor ama iki bant da ayn─▒ modelin ayn─▒ 3/4 profil pozunda ÔÇö stok g├Ârsel hissi yarat─▒yor, ┼şehirler aras─▒ fark kayboluyor.
+ÔåÆ *Tom Wood (`tomwood-home.jpg`)*: her bantta farkl─▒ model, farkl─▒ cinsiyet, farkl─▒ kadraj (g├Â─ş├╝s hizas─▒ yak─▒n plan ÔåÆ y├╝z portresi ÔåÆ tam boy) kullan─▒yor, hi├ğbir tekrar yok.
+ÔåÆ ├ûneri: Peak band─▒ i├ğin farkl─▒ model veya en az─▒ndan radikal farkl─▒ kadraj (├Ârn. sadece kulak/├ğene detay plan─▒, y├╝z g├Âr├╝nmeden) kullan.
+
+**2. Metal buton durgun hali d├╝z/jenerik**
+"Koleksiyonu ke┼şfet" butonu siyah pill + beyaz yaz─▒ ÔÇö markan─▒n "g├╝m├╝┼ş/metal" dilinden hi├ğ iz yok, arka plandaki sinematik g├Ârselin yan─▒nda ucuz duruyor.
+ÔåÆ *Charlotte Chesnais / Tom Wood*: CTA'lar─▒ ince serif tipografi + alt ├ğizgi + ok ikonu, buton yerine tipografik zarafetle ├ğ├Âz├╝yor; hi├ğbiri jenerik "pill button" kullanm─▒yor.
+ÔåÆ ├ûneri: Ya ince g├╝m├╝┼ş/metalik gradient kenarl─▒kl─▒, durgun halde bile hafif parlayan bir buton tasarla, ya da buton yerine Tom Wood tarz─▒ ince ├ğizgili tipografik link kullan.
+
+**3. B├Âl├╝mler aras─▒ ge├ği┼ş sert/kesintili**
+Hero ÔåÆ Hong Kong ÔåÆ Peak ÔåÆ Mid-Levels aras─▒nda koyu bo┼şluklar sinematik ak─▒┼ş─▒ kesiyor, sayfa "section section" hissediliyor.
+ÔåÆ *Tom Wood*: g├Ârseller aras─▒ negatif alan ritmik ve ak─▒c─▒, kesinti hissi yok.
+ÔåÆ ├ûneri: Siyah ara bo┼şluklar─▒ azalt, scroll'da yumu┼şak fade/parallax ge├ği┼ş ekle.
+
+**4. Navigasyon/sepet eksikli─şi**
+Header'da sadece "Koleksiyon, Hakk─▒nda" var ÔÇö sepet, arama, hesap ikonu yok. Kullan─▒c─▒ sat─▒n alma ak─▒┼ş─▒n─▒n nerede oldu─şunu bilmiyor.
+ÔåÆ *Kinn, Sarah & Sebastian, Tom Wood*: hepsinde sabit header'da sepet+arama ikonu var.
+ÔåÆ ├ûneri: Sticky header'a minimal sepet ikonu ekle (say─▒ rozeti ile).
+
+**5. ├£r├╝n bilgisi eksikli─şi**
+Bantlarda "K├╝pe, g├╝m├╝┼şle" gibi malzeme notu var ama ├╝r├╝n ad─▒/fiyat yok; kullan─▒c─▒ t─▒klamadan hi├ğbir somut bilgi edinmiyor.
+ÔåÆ *Sophie Buhai*: her g├Ârselin alt─▒nda en az─▒ndan kategori ad─▒ (Bracelets, Necklaces) net.
+ÔåÆ ├ûneri: Bant ba┼şl─▒klar─▒n─▒n alt─▒na ├╝r├╝n ad─▒ + fiyat aral─▒─ş─▒ ekle.
+
+**6. Footer fonksiyonel de─şil, sadece dekoratif**
+Alt k─▒s─▒mda saat/┼şehir + dev wordmark var ama Instagram, e-posta/newsletter, ileti┼şim linki yok.
+ÔåÆ *Sophie Buhai*: sessizlik esteti─şini bozmadan About/Newsletter/Instagram/Contact/FAQ linkleri sade ┼şekilde duruyor.
+ÔåÆ ├ûneri: Footer'a minimal ama fonksiyonel 4-5 link ekle.
+
+## 3) ├ûzel Odak Noktalar─▒
+
+- **Hong Kong/Peak poz tekrar─▒**: Yukar─▒da #1 ÔÇö en kritik marka tutarl─▒l─▒─ş─▒ sorunu, acil ├ğ├Âz├╝lmeli.
+- **Metal buton durgun hali**: Yukar─▒da #2 ÔÇö marka kimli─şiyle (g├╝m├╝┼ş) do─şrudan ├ğeli┼şen tek ├Â─şe.
+- **B├Âl├╝mler aras─▒ ge├ği┼ş**: Yukar─▒da #3 ÔÇö "sessizlik" temas─▒n─▒ desteklemek yerine ritmi b├Âl├╝yor.
+BITTI

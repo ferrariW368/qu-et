@@ -1,0 +1,47 @@
+﻿**Method not:** Siteyi s─▒f─▒rdan g├Ârd├╝m, kaynak koda bakmad─▒m (sadece ekran g├Âr├╝nt├╝leri + referanslar).
+
+**1) Awwwards Puan Tablosu**
+
+| | Tasar─▒m (40) | Kullan─▒labilirlik (30) | Yarat─▒c─▒l─▒k (20) | ─░├ğerik (10) | A─ş─▒rl─▒kl─▒ Ort. |
+|---|---|---|---|---|---|
+| qu/et ANA SAYFA | 8.5 | 7.0 | 8.0 | 6.0 | **7.7** |
+| qu/et T├£M S─░TE | 7.5 | 6.5 | 6.5 | 6.0 | **6.9** |
+| qu/et MOB─░L | 8.0 | 7.5 | 7.5 | 6.0 | **7.6** |
+| Sophie Buhai | 9.0 | 7.5 | 8.5 | 7.0 | **8.3** |
+| Tom Wood | 8.0 | 8.0 | 7.0 | 7.5 | **7.8** |
+| Charlotte Chesnais | 7.5 | 7.0 | 7.5 | 7.0 | **7.3** |
+
+**2) Sayfa Sayfa**
+
+| Sayfa | Not | Puan |
+|---|---|---|
+| Ana sayfa | Sinematik giri┼şte (beton t├╝nel ÔåÆ Hong Kong portresi) g├╝├ğl├╝ atmosfer kuruluyor, ama ilk ekranda ├╝r├╝n yok, CTA'lar ("Ke┼şfet") k├╝├ğ├╝k ve pasif. | 8/10 |
+| Koleksiyon | ─░ki ├╝r├╝n yan yana temiz oturuyor, kartlar tamamen statik ÔÇö hover/micro-interaction yok. | 7/10 |
+| ├£r├╝n (Peak/Mid-Levels) | Jenerik e-ticaret PDP ┼şablonu (galeri + sa─şda bilgi); 3 sabit kare g├Ârsel, zoom/lightbox yok. | 6.5/10 |
+| Hakk─▒m─▒zda | En g├╝├ğl├╝ sayfa ÔÇö ger├ğek portre + ├ğizim ─▒zgaras─▒n─▒n kontrast─▒ markay─▒ en net anlatan yer. | 8.5/10 |
+| Sepet/Sipari┼ş | Bo┼ş state do─şru ├ğal─▒┼ş─▒yor ama "/siparis" sayfas─▒nda ├Âdemenin neden kapal─▒ oldu─şu s├Âylenmiyor, CTA jenerik. | 6/10 |
+| Mobil | Hiyerar┼şi masa├╝st├╝nden bozulmadan ta┼ş─▒nm─▒┼ş, g├Ârseller k─▒rp─▒lmadan iniyor; dokunma hedefleri (ince linkler) k├╝├ğ├╝k kalm─▒┼ş. | 7.5/10 |
+
+**3) En B├╝y├╝k 5 Eksik**
+
+1. **PDP galeri deneyimi zay─▒f** ÔÇö Sabit 3 kare g├Ârsel, zoom/b├╝y├╝tme/lightbox yok. Ref: `tomwood-product.jpg` ÔÇö b├╝y├╝k hero + yak─▒n plan detay s─▒ras─▒ scroll'da zoom hissi veriyor. ├ûneri: ├╝r├╝n g├Ârsellerine lightbox veya scroll-triggered b├╝y├╝me ekle.
+2. **├£r├╝n foto─şraflar─▒ yapay zek├ó ├╝retimi** ÔÇö j├╝ri bunu an─▒nda fark eder, dokunma/─▒┼ş─▒k tutars─▒zl─▒klar─▒ (ta┼ş dokusu, yans─▒malar) ele veriyor; markan─▒n "ger├ğek" vaadini (Hakk─▒m─▒zda'daki ger├ğek portre) zedeliyor. Lansmana kadar en az hero/kapak g├Ârseli ger├ğek ├ğekimle de─şi┼ştirilmeli.
+3. **Hover/micro-interaction yok** ÔÇö koleksiyon kartlar─▒, men├╝, footer tamamen statik. Ref: `sophiebuhai-home.jpg` kartlar─▒ hover'da hafif ├Âl├ğek/g├Âlge de─şi┼şimiyle canlan─▒yor. ├ûneri: koleksiyon kartlar─▒na hover'da subtle scale (1.00ÔåÆ1.03) + crop shift.
+4. **Sipari┼ş ak─▒┼ş─▒nda belirsizlik** ÔÇö "/siparis" sayfas─▒nda "├ûnce bir tasar─▒m se├ğ" mesaj─▒, ├Âdemenin 8 Kas─▒m'a kadar kapal─▒ oldu─şunu a├ğ─▒klam─▒yor; kullan─▒c─▒ neden al─▒┼şveri┼ş yapamad─▒─ş─▒n─▒ anlam─▒yor. ├ûneri: sayfaya "├ûn sipari┼ş 8 Kas─▒m'da a├ğ─▒l─▒yor" notu ekle.
+5. **Malzeme/├ûl├ğ├╝ bilgisi bir t─▒k gerisinde** ÔÇö accordion'lar varsay─▒lan kapal─▒, CTA'ya (Sepete ekle) malzeme bilgisi okunmadan ula┼ş─▒l─▒yor. Ref: `charlottechesnais-product.jpg` ├Âzellik listesi sayfada a├ğ─▒k duruyor. ├ûneri: "Malzeme" accordion'unu varsay─▒lan a├ğ─▒k yap.
+
+Bilin├ğli kararlar (2 ├╝r├╝n, az metin, animasyon yok) eksik say─▒lmad─▒ ÔÇö bunlar markan─▒n "sessizlik" ilkesiyle tutarl─▒.
+
+**4) Honorable Mention / SOTD i├ğin eksik**
+- ─░mza niteli─şinde bir micro-interaction/hover sistemi yok.
+- Sayfa ge├ği┼şlerinde (navigasyon aras─▒) hissedilir bir transition yok, anl─▒k y├╝k de─şi┼şimi gibi hissettiriyor.
+- ├£r├╝n foto─şraf├ğ─▒l─▒─ş─▒n─▒n yapay zek├ó k├Âkenli olmas─▒, "craft" vurgusunu baltal─▒yor.
+
+**5) Lansmana Haz─▒rl─▒k**
+- Masa├╝st├╝: **85%**
+- Mobil: **85%**
+- ─░├ğerik: **60%** (AI ├╝r├╝n g├Ârselleri + ├Âdeme-kapal─▒ mesajla┼şma eksik)
+- ├ûdeme: **0%** (bilin├ğli olarak 8 Kas─▒m'a kadar kapal─▒)
+
+BITTI
+BITTI

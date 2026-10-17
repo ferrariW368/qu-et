@@ -1,0 +1,11 @@
+Sen kıdemli bir tipografi ve marka tasarımcısısın. Türkçe yaz, site dosyalarına DOKUNMA. Varsa Impeccable ve design-dna skill'lerinin tipografi ölçütlerini kullan.
+
+Site: qu/et (sessiz, minimal gümüş takı markası; font Jost tek aile, koyu zemin #121211).
+Ekran görüntüsü: C:\FERRARI\01_GARAGE\01_ACTIVE_PROJECTS\qu.et\_claude\shots\juri2-hakkimizda.jpg (1440 px tam sayfa). Kaynak: C:\FERRARI\01_GARAGE\01_ACTIVE_PROJECTS\qu.et\Site\assets\site.css (sonundaki revN bloğu ve svg.footer-wordmark kuralları), Site\hakkimizda.html.
+
+İki öğeyi değerlendir:
+1) Hakkımızda açılışındaki alıntı: "Not to say less, but to leave more space." (blockquote, clamp(52px,7.6vw,140px), weight 200, line-height 1, max-width 13ch, sola yaslı) + altındaki "Pınar" imzası. Hizalama, satır kırılımı, ölçü, ağırlık, imza konumu, boşluklar doğru mu? Ne sorun var?
+2) Footer'daki dev "qu/et" SVG logotipi (viewBox 0 0 900 300, text x=0 y=292, alt kısmı bilerek kırpılmış, genişlik min(49vw,980px)). "q" harfinin alt uzantısı kesildiği için "a" gibi okunuyor. Hizalama mantığı ne olmalı?
+
+Her öğe için: sorunlar (madde), 3 seçenek (her biri tek satır gerekçe, somut CSS değerleriyle), önerin. Toplam 45 satırı geçme.
+Çıktıyı şu dosyaya yaz: C:\FERRARI\01_GARAGE\01_ACTIVE_PROJECTS\qu.et\_claude\tipo-sonuc.txt  Son satır BITTI.

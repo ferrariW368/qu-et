@@ -1,0 +1,21 @@
+﻿**Kapsam:** `assets/site.css` revAB bloklar─▒ ÔÇö cart-drawer ge├ği┼şleri (354-365) ve `.comparison-silver-wrap` transform tabanl─▒ kar┼ş─▒la┼şt─▒rma (262-266). Dosyalar de─şi┼ştirilmedi.
+
+## Bulgular
+
+| Before | After | Why |
+| --- | --- | --- |
+| `assets/site.css:354` `.cart-drawer{...transition:translate .34s cubic-bezier(.16,1,.3,1)...}` | `.34s` ÔåÆ `.28s` veya yorum sat─▒r─▒yla gerek├ğelendir | UI e┼şi─şi 300ms; ├ğekmece geni┼ş y├╝zey kaplasa da gerek├ğesiz 340ms bir bulgu say─▒l─▒r ÔÇö s├╝reyi k─▒salt ya da neden uzun tutuldu─şunu kodda not et |
+| `assets/site.css:360-364` `.text-link`, `.gallery-thumb`, `nav a`, `.primary-button/.secondary-button`, `.quantity-control button` hover ge├ği┼şleri `@media (hover:hover) and (pointer:fine)` ile kap─▒l─▒ de─şil | Bu transition kurallar─▒n─▒ `@media (hover:hover) and (pointer:fine){ ... }` i├ğine al | Dokunmatik cihazda "sticky hover" durumu art─▒k .15ÔÇô.26s animasyonlu kal─▒yor; ├Ânceden anl─▒k renk de─şi┼şimiydi, revAB bunu g├Âr├╝n├╝r/uzat─▒lm─▒┼ş hale getirdi |
+
+**Not (bulgu de─şil):** `assets/site.css:262-266` `.comparison-silver-wrap` ÔÇö eski s├╝r├╝m (`arsiv/...oncesi/assets/site.css:262`) `--reveal` de─şi┼ştik├ğe `mask-image` gradient pozisyonunu her `pointermove`'da yeniden hesapl─▒yordu (paint maliyetli). revAB bunu statik maskeli, sadece `transform` g├╝ncellenen bir yap─▒ya ├ğevirmi┼ş ÔÇö CSS de─şi┼şkenÔåÆtransform tetiklemesi standart kayg─▒s─▒n─▒ (recalc storm) do─şru ┼şekilde gideren bir d├╝zeltme. `will-change` da sadece `data-endpoint=mixed` durumunda uygulan─▒yor (354:265), gereksiz layer tutmuyor. Ek aksiyon gerekmiyor.
+
+## De─şerlendirme
+
+**2. G├Âzden ka├ğan sadele┼ştirmeler / performans ÔÇö orta ├Âncelik**
+- `site.css:354` s├╝re b├╝t├ğesi a┼ş─▒m─▒, gerek├ğe eksik.
+
+**6. Eri┼şilebilirlik ÔÇö orta ├Âncelik**
+- `site.css:360-364` hover ge├ği┼şleri pointer:fine kap─▒s─▒ yok; dosyan─▒n genelinde (├Ârn. `:hover` kurallar─▒ sat─▒r 55, 97, 154, 169, 174, 176) de bu kap─▒ yok, yani revAB mevcut konvansiyona uydu ÔÇö ama animasyon eklemek sticky-hover sorununu daha g├Âr├╝n├╝r k─▒ld─▒.
+
+**Karar: Approve (ko┼şullu)** ÔÇö feel-breaking regresyon yok, `@starting-style`/`allow-discrete` kullan─▒m─▒ do─şru, easing e─şrileri (`cubic-bezier(.16,1,.3,1)`, `ease-out`) uygun, kar┼ş─▒la┼şt─▒rma bile┼şeni zaten do─şru optimize edilmi┼ş. ─░ki bulgu k├╝├ğ├╝k/orta ├Ânem; mevcut kodu bozmadan `assets/site.css` ├╝zerinde nokta d├╝zeltme ile kapat─▒labilir.
+BITTI

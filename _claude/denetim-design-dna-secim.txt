@@ -1,0 +1,25 @@
+﻿Design DNA JSON yaz─▒ld─▒: `C:/FERRARI/01_GARAGE/01_ACTIVE_PROJECTS/qu.et/_claude/design-dna-secim.json`. Site dosyalar─▒na dokunulmad─▒.
+
+**├ûzet ÔÇö 4 referanstan ├ğ─▒kan ortak dil:**
+
+| Referans | Katk─▒ |
+|---|---|
+| tomwood-home | Tam ekran hero, serif italik ba┼şl─▒k ├╝stte-ortada, 2'li s─▒k─▒ g├Ârsel gridi |
+| ore-home | Dev tipografi (14ÔÇô18vw), maske-reveal scroll animasyonu |
+| charlottechesnais-product | ├£r├╝n sayfas─▒nda tek dominant yak─▒n ├ğekim (%70 viewport), dar bilgi paneli sa─ş ├╝stte |
+| x21-wordmark-footer | Footer'da marka ad─▒ dev ├Âl├ğekte, nav kolonlar─▒ndan ayr─▒, kendi "kapan─▒┼ş" b├Âl├╝m├╝ |
+
+**qu/et i├ğin 10 somut kural** (JSON'da tam px/vw de─şerleriyle):
+1. Hero 100vh, caption ~38vh'den ba┼şlar, 24ÔÇô32px serif italik
+2. Dev tipografi b├Âl├╝m├╝: clamp(80px, 16vw, 280px), line-height 0.85
+3. ├£r├╝n sayfas─▒ hero g├Ârsel %70vh, bilgi paneli max 360px geni┼şlik
+4. 2'li grid'de 2ÔÇô4px hairline gutter (standart 24px de─şil)
+5. Nefes b├Âl├╝mleri 240ÔÇô320px, metin max-width 640px
+6. Footer wordmark clamp(100px, 22vw, 420px), nav'dan 64ÔÇô96px ayr─▒k
+7. Footer nav: 10ÔÇô11px uppercase label, 13ÔÇô14px link, 8px dikey ritim
+8. Caption'lar 10ÔÇô11px, g├Ârsel alt─▒ sol hizal─▒, ok ikonlu (buton de─şil)
+9. Hover: scale(1.02ÔÇô1.03), 500ÔÇô600ms ease-out, parallax max %10ÔÇô20
+10. Dev ├Â─şelerden ├Ânce min 200pxÔÇô100vh bo┼ş alan
+
+Renk paleti kas─▒tl─▒ olarak ├ğ─▒kar─▒lmad─▒ ÔÇö qu/et'in sabit koyu greige paleti korunuyor.
+BITTI

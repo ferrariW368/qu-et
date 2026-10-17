@@ -1,0 +1,29 @@
+# qu/et — repo: site source (Site/), deploy folder (dist/), QA scripts and notes (_claude/).
+# Cloudflare Pages deploys dist/ (no build step): run build-pages.py + make-dist.py before committing.
+
+# Raw material and working files (large or private, not part of the site)
+Görseller/
+_kaynak/
+tmp/
+preview-site/
+
+# Backups and generated review output
+Site/arsiv/
+Site/review/
+_claude/shots/
+_claude/referans/
+_claude/dist-eski-revS/
+_claude/archify_work/
+_claude/*.tar.gz
+*.log
+*.err
+
+# Dependencies and caches
+node_modules/
+__pycache__/
+.wrangler/
+
+# Secrets never go in the repo
+.env
+.env.*
+.dev.vars

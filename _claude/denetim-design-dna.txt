@@ -1,0 +1,120 @@
+﻿Bu oturumda hi├ğbir dosya yazma i┼şlemine izin verilmiyor (salt-okunur eri┼şim). JSON'u dosyaya kaydedemiyorum; a┼şa─ş─▒da tam metni veriyorum ÔÇö istersen kendin `_claude/design-dna.json` olarak kaydedersin.
+
+## Design DNA ÔÇö qu/et (assets/site.css + sayfalar)
+
+```json
+{
+  "meta": {
+    "source": "assets/site.css (372 sat─▒r) + qu-et-home-masaustu.html, koleksiyon.html, peak.html, mid-levels.html, hakkimizda.html, sepet.html, siparis.html",
+    "extraction_method": "kod analizi (statik), goz ile renk olcumu yapilmadi",
+    "generator": "tools/build-pages.py (python, string-template HTML uretici)",
+    "excluded": "qu-et-home-mobil.html ÔÇö ayri bir tasarim-araci ciktisi (support.js/x-dc sarmalayicisi), site.css kullanmiyor, build-pages.py tarafindan uretilmiyor; DNA disi tutuldu ama bulgu #1'de ayrica raporlandi"
+  },
+  "design_system": {
+    "color": {
+      "surface": {
+        "background": "#121211 (--night)",
+        "background_alt": "#1c1b1a (--surface)",
+        "background_alt2": "#22211f (--surface-2)"
+      },
+      "neutral": {
+        "scale": ["#121211", "#1c1b1a", "#191817", "#22211f", "#272522", "#252320", "#aaa49b (--muted)", "#c9cbcd (--silver)", "#e9e5df (--text)"],
+        "usage": "text = #e9e5df (ana metin), muted = #aaa49b (ikincil metin/eyebrow), silver = #c9cbcd (vurgu/odak halkasi)"
+      },
+      "accent": {
+        "hex": "yok ÔÇö ayirt edici marka rengi tanimli degil; tek 'vurgu' liquid-metal gradyanidir (#f6f6f5ÔåÆ#55595dÔåÆ#e8e9e9ÔåÆ#4d5156ÔåÆ#d9dbdd)"
+      },
+      "semantic": {
+        "error": "#c98f84 / #d9a79c (sadece form validasyonu, revAB eklentisi)",
+        "focus_ring": "#c9cbcd (--silver)"
+      },
+      "one_off_hex_count": "~70 benzersiz hex/rgba degeri, cogu tek kullanimlik (bkz. tutarsizlik tablosu)"
+    },
+    "typography": {
+      "font_family": "'Jost', sans-serif (self-hosted woff2, weight 200/300/400)",
+      "base_size": "16px",
+      "base_line_height": "1.65 (body) / bilesen bazinda 1.1ÔÇô1.85 arasi degisken",
+      "weight_usage": "200 = dekoratif/buyuk harfler (logo 'i', hero-wordmark, +/- ikonlari); 300 = varsayilan govde ve basliklar; 400 = buton/eyebrow/link vurgusu",
+      "scale": "modular olcek yok ÔÇö fluid clamp() basliklar (6 farkli clamp araligi) + 40+ sabit px deger (11,12,13,14,16,17,18,19,20,21,23,24,27,28,30,36,42,44,46,48...) ortak bir orana baglanmadan kullaniliyor",
+      "letter_spacing": "0 ile .2em arasinda, en cok .025emÔÇô.045em (govde), .2em (eyebrow, tek buyuk deger)"
+    },
+    "spacing": {
+      "unit_base": "yok (4/8px grid degil) ÔÇö deger kumeleri: 12,14,16,18,20,22,24,28,30,32,36,40,44",
+      "gutter": "clamp(24px,5.5vw,88px) ÔÇö tek merkezi degisken (--gutter)",
+      "section_rhythm": "72ÔÇô150px dikey; sayfa ici degerler sabit px, responsive'de tek tek override ediliyor (sistematik olcek yok)"
+    },
+    "layout": {
+      "max_width": "1280px (--measure) genel kabuk; ama .product-sequence 1160px, .about-image farkli oranlar",
+      "grid": "CSS grid, cogunlukla 2 kolon (1fr 1fr) veya asimetrik (1.5fr/1fr, 1.2fr/.8fr, 1.3fr/.8fr) ÔÇö oran sabiti yok",
+      "breakpoints": "1800, 1000, 760, 420 ÔÇö 4 kademe, duzensiz araliklarla"
+    },
+    "shape": {
+      "border_radius": "0 (kartlar/panel/input) VE 999px (sadece CTA pill) ÔÇö iki uc nokta, ara deger yok",
+      "borders": "1px solid var(--line) (rgba(233,229,223,.17)) standart ayirici; input'larda --field-line (#6f6a64) ayri bir degisken"
+    },
+    "elevation": {
+      "shadow_style": "duz UI'da shadow yok (flat); shadow sadece CTA (3 katmanli box-shadow) ve cart-drawer/live-message icin kullaniliyor",
+      "approach": "minimal / dusuk katmanli ÔÇö derinlik oncelikle gradyan ve maskeyle, shadow'la degil"
+    },
+    "motion": {
+      "durations": "0.15sÔÇô8s arasinda (mikro etkilesim 0.15ÔÇô0.34s, hero/logo anlatim animasyonlari 6ÔÇô8s, sweep efektleri)",
+      "easing": "ease / ease-out agirlikli, CTA drawer'da cubic-bezier(.16,1,.3,1); eski keyframe'lerde ease-in-out",
+      "reduced_motion": "kapsamli destek var (@media prefers-reduced-motion iki kez tanimli, 313 ve 324. satirlar ÔÇö kismen cakisan/tekrar eden kurallar)"
+    },
+    "components": {
+      "cta_button": "pill, liquid-metal WebGL shader dolgulu, tek kullanimlik ozel bilesen (sadece ana sayfa)",
+      "primary_secondary_button": "kare kenarli, border tabanli, duz renk ÔÇö CTA'dan tamamen farkli dil",
+      "card": "kare kose, border yok, sadece gorsel+baslik",
+      "form_field": "kare kose, 1px border, 50px min-height"
+    }
+  },
+  "design_style": {
+    "mood": "sessiz, editoryal, l├╝ks-minimal; karanl─▒k galeri hissi",
+    "visual_language": "fotografik + ince cizgi tipografi; dekorasyon yok, bosluk ana arac",
+    "composition": "buyuk negatif alan, asimetrik 2-kolon duzen, baslik/gorsel karsitligi",
+    "imagery": "belgesel/urun fotografi + dovme-gumus 'karsilastirma' efekti (marka hikayesinin gorsel ozeti)",
+    "interaction_feel": "yavas, kasitli; hover'larda ince cizgi/alti-cizgi animasyonlari, ani sicrama yok",
+    "brand_voice": "az soz, Turkce, iddiasiz ('ornek fiyat', 'on siparis' gibi durum etiketleriyle durust/henuz-lansmanlanmamis ton"
+  },
+  "visual_effects": {
+    "overview": {
+      "effect_intensity": "dusuk-orta ÔÇö bir adet gercek WebGL etkisi, gerisi CSS/SVG",
+      "performance_tier": "hafif (lightweight), sadece CTA WebGL icin orta (medium) agirlik"
+    },
+    "webgl_shader": {
+      "enabled": true,
+      "detail": "liquid-metal-button.js ÔÇö paper-shaders tabanli GLSL shader, sadece ana sayfadaki tek CTA'da (liquid-metal-button.source.js + NOTICE dosyasi mevcut)"
+    },
+    "canvas": { "enabled": true, "detail": "yalnizca liquid-metal CTA'nin render yuzeyi (canvas, shader cikisini tasir)" },
+    "svg_animation": {
+      "enabled": true,
+      "detail": "hero-wordmark iki katmanli SVG metin + mask ile 'gunes isigi' gecis animasyonu (wall-paint keyframe, 8s)"
+    },
+    "scroll_effects": { "enabled": false },
+    "cursor_effects": { "enabled": false },
+    "glassmorphism": { "enabled": false },
+    "particles_3d": { "enabled": false },
+    "image_compare_slider": {
+      "enabled": true,
+      "detail": "comparison.js + .comparison-* siniflari ÔÇö pointer ile ten/gumus gecisi (mask + transform), otomatik hareket yok (erisilebilirlik kaygisiyla kasitli)"
+    },
+    "composite_notes": "Efekt butcesi kasitli olarak kucuk tutulmus: sadece 1 CTA'da WebGL, sadece urun karsilastirmalarinda pointer-tabanli reveal. Bu disiplin design_style ile uyumlu (sessiz/editoryal)."
+  }
+}
+```
+
+## DNA ile kod aras─▒ndaki en ├Ânemli 8 tutars─▒zl─▒k
+
+| # | Bulgu | Dosya:Sat─▒r | D├╝zeltme |
+|---|---|---|---|
+| 1 | `qu-et-home-mobil.html` kendi `<style>` blo─şunda tamamen ayr─▒ bir token seti tan─▒ml─▒yor (`--mid:#A29C94` vs `--muted:#aaa49b`; `--line` alfa `.16` vs `.17`; Google Fonts CDN'den Jost ├ğekiyor, self-host woff2 kullanm─▒yor) ÔÇö `build-pages.py` bu dosyay─▒ ├╝retmiyor, bir tasar─▒m-arac─▒ ihracat─▒ site k├Âk├╝ne s─▒zm─▒┼ş. | `qu-et-home-mobil.html:13,15` | Dosyay─▒ `arsiv/`e ta┼ş─▒ veya `tools/build-pages.py` ile yeniden ├╝ret; k├Âk dizinde site.css'siz sayfa kalmas─▒n. |
+| 2 | Tip ├Âl├ğe─şi yok: 40'tan fazla benzersiz `font-size` de─şeri (12,13,14,17,18,19,20,21,23,24,27,28,30,36,42,44,46,48...) ortak bir orana ba─şl─▒ de─şil. | `assets/site.css:94-348` (da─ş─▒n─▒k) | `--step-*` de─şi┼şkenleriyle 5-6 kademeli bir tip ├Âl├ğe─şi tan─▒mla, tekil px de─şerlerini bunlara e┼şle. |
+| 3 | K├Â┼şe yar─▒├ğap─▒ iki u├ğ noktada: `0` (kart/panel/input) ve `999px` (sadece CTA pill) ÔÇö ara bir "soft" de─şer hi├ğ kullan─▒lm─▒yor, bilin├ğli mi tesad├╝fi mi belirsiz. | `assets/site.css:106` (999px) vs `:242` (0 ├Ârt├╝k) | `--radius-pill` ad─▒yla adland─▒r, di─şer bile┼şenlerde `0` oldu─şunu bir yorumla netle┼ştir (DNA'ya g├Âre kas─▒tl─▒ysa sorun de─şil, ama token'la┼şt─▒r─▒lmam─▒┼ş). |
+| 4 | `.cta` (liquid-metal) ile `.primary-button`/`.secondary-button` tamamen farkl─▒ iki g├Ârsel dil ta┼ş─▒yor: biri gradyan+shader+pill, di─şeri d├╝z renk+kare k├Â┼şe+border ÔÇö ayn─▒ "birincil eylem" rol├╝ i├ğin iki rakip bile┼şen. | `assets/site.css:106-114` vs `:172-177` | Rol├╝ netle┼ştir: `.cta` sadece pazarlama/hero linki, `.primary-button` ticari aksiyon ÔÇö bu ayr─▒m─▒ bir yorum sat─▒r─▒yla kodda sabitle (┼şu an sadece konvansiyonla, dok├╝mante edilmeden duruyor). |
+| 5 | `--muted` (#aaa49b) ve `--silver` (#c9cbcd) d─▒┼ş─▒nda onlarca tek-seferlik hex/rgba de─şeri (`#211e1b`, `#272522`, `#191817`, `#79756e`, `#635f59`, `#605c56`, `#6f6a64`...) ÔÇö arka plan tonlar─▒ i├ğin merkezi bir n├Âtr skala yok, her b├Âl├╝m kendi tonunu icat ediyor. | `assets/site.css:78,85,90,95,146,278,345` | Bu tonlar─▒ `--surface-3`, `--surface-4` gibi 2-3 ek n├Âtr ad─▒ma indir; ayn─▒ amaca hizmet eden (├Ârn. kart arka plan─▒) renkleri birle┼ştir. |
+| 6 | `--line` alfa de─şeri site.css i├ğinde `.17` (k├Âk tan─▒m) sabit, ama `qu-et-home-mobil.html`'de `.16` ÔÇö ayn─▒ rol├╝n iki farkl─▒ say─▒sal de─şeri (bulgu #1'in bir alt-kan─▒t─▒, ayr─▒ not edilmeye de─şer ├ğ├╝nk├╝ token ad─▒ ayn─▒). | `assets/site.css:23` vs `qu-et-home-mobil.html:13` | Tek kaynak: mobil prototip kald─▒r─▒l─▒rsa otomatik ├ğ├Âz├╝l├╝r; kal─▒c─▒ysa `.17`e e┼şitle. |
+| 7 | `prefers-reduced-motion` iki kez, k─▒smen farkl─▒ kapsamlarla tan─▒ml─▒ (`:313`'te hero/preview-corner i├ğin, `:324`'te genel `*` i├ğin) ÔÇö ikinci blok birinciyi ge├ğersiz k─▒lm─▒yor ama bak─▒mda kafa kar─▒┼şt─▒r─▒r, tek sorgu alt─▒nda birle┼ştirilebilir. | `assets/site.css:313-314` ve `:324` | ─░ki `@media(prefers-reduced-motion:reduce)` blo─şunu birle┼ştir. |
+| 8 | Bo┼şluk (spacing) sistemi 4/8px gride dayanm─▒yor; dikey ritim de─şerleri (72,86,94,100,106,120,130,144,150) sayfa baz─▒nda ayr─▒ ayr─▒ se├ğilmi┼ş, ortak bir `--space-*` ├Âl├ğe─şi yok ÔÇö mevcut tek sistemli de─şer sadece `--gutter`. | `assets/site.css:90,117,133,139,232` | Dikey ritim i├ğin `--space-sm/md/lg/xl` tan─▒mla (├Ârn. 72/100/130/150), sayfa bazl─▒ sabit pxleri bunlarla de─şi┼ştir. |
+
+**Not ÔÇö listelemeyece─şim, zaten karar bekleyen konular (talimat─▒nca):** fiyat vurgusu, metal buton, logo 4.6sn gecikmesi.
+BITTI

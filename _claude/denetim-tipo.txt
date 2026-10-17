@@ -1,0 +1,20 @@
+﻿## 1) Hakk─▒m─▒zda a├ğ─▒l─▒┼ş al─▒nt─▒s─▒ ÔÇö de─şerlendirme
+
+**Kaynak:** `hakkimizda.html:27` (`<blockquote><p lang="en">Not to say less, but to leave more space.</p><footer>P─▒nar</footer></blockquote>`), stil `site.css:538-540,556`.
+
+| ├ûzellik | De─şer | Yorum |
+|---|---|---|
+| Font-size | `clamp(52px,7.6vw,140px)` | Masa├╝st├╝nde ~140px ÔÇö marka i├ğin do─şru cesaret, laf─▒ tek g├Ârsel jest olarak ta┼ş─▒yor. |
+| Weight | 200 (Jost ExtraLight) | Markan─▒n sessiz/minimal karakterine tam oturuyor. |
+| Line-height | 1 | ├£├ğ sat─▒rl─▒k blokta s─▒k─▒ ama weight 200'de nefes al─▒yor; ekran g├Âr├╝nt├╝s├╝nde ├ğarp─▒┼şma yok. |
+| Letter-spacing | -.03em | B├╝y├╝k boyutta (140px) do─şru karar ÔÇö ultralight harflerin aras─▒n─▒ toplar, "gev┼şek" g├Âr├╝nmesini engeller. **Ama** `line 556`'da mobilde 48px'e d├╝┼şerken ayn─▒ -.03em kal─▒yor; bu boyut/weight kombinasyonunda tracking g├Ârece daha agresif hissedilir, mobil ekran g├Âr├╝nt├╝s├╝ kontrol edilmeli. |
+| max-width / text-wrap | `13ch` + `balance` | ─░sabetli: "Not to say less," / "but to leave" / "more space." k─▒r─▒l─▒m─▒ tesad├╝f de─şil, tipografik bir karar ÔÇö iyi zanaat. |
+| Attribution (`footer`) | 15px, `var(--muted)`, 36px ├╝st bo┼şluk | Hiyerar┼şi bilin├ğli: 140px ÔåÆ 15px aras─▒ndaki sert kontrast "f─▒s─▒lt─▒" etkisi veriyor, markan─▒n sessizli─şiyle tutarl─▒. T─▒rnak i┼şareti yok, dekorasyon yok ÔÇö do─şru restraint. |
+| Dil | `lang="en"` ─░ngilizce al─▒nt─▒, site TR | Eri┼şilebilirlik a├ğ─▒s─▒ndan do─şru i┼şaretleme (ekran okuyucu telaffuzu i├ğin). Marka sesi olarak ─░ngilizce b─▒rak─▒lmas─▒ bilin├ğli bir se├ğim gibi duruyor ama bu bir varsay─▒m ÔÇö teyit gerekir. |
+
+**Sonu├ğ:** Al─▒nt─▒n─▒n tipografik kurgusu (boyut, weight, tracking, balanced wrap, attribution kontrast─▒) k─▒demli bir sessiz/l├╝ks marka diline uygun, iddial─▒ ama g├Âsteri┼şsiz. Tek somut soru i┼şareti: mobil `48px` k─▒r─▒l─▒m─▒nda `-.03em` tracking'in g├Âzle teyidi gerekiyor.
+
+---
+
+**2) ├Â─şesi mesajda eksik kald─▒** ÔÇö "Not" ile kesiliyor. Hangi ikinci ├Â─şeyi de─şerlendirmemi istiyorsun? (├ûrn. `svg.footer-wordmark` ÔÇö `site.css:453-455,483` dev arka plan logosu mu, yoksa ba┼şka bir ┼şey mi?)
+BITTI
