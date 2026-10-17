@@ -222,6 +222,19 @@ def dialogs(lang):
 </dialog>
 <p class="sr-only" role="status" aria-live="polite" id="site-status"></p>'''
 
+# revT2: /assets files keep a 1-hour cache but their names never change, so phones kept showing old CSS, JS and
+# images after a deploy. Each asset URL gets ?v=<content hash>: a changed file gets a new URL, an unchanged one stays cached.
+import hashlib
+_VERSION = {}
+def versioned(doc):
+    def tag(m):
+        path = m.group(1)
+        if path not in _VERSION:
+            f = SITE / path.lstrip('/')
+            _VERSION[path] = hashlib.sha1(f.read_bytes()).hexdigest()[:8] if f.is_file() else None
+        return path + ('?v=' + _VERSION[path] if _VERSION[path] else '')
+    return re.sub(r'(/assets/[A-Za-z0-9_./-]+\.(?:css|js|webp|svg|png|jpg|woff2))(?![?\w])', tag, doc)
+
 def page(lang, key, title, description, main, current='', home=False, extra='', path=None, alternates=True):
     alt_links = ''
     if alternates and key in ROUTES['en']:
@@ -252,6 +265,7 @@ def page(lang, key, title, description, main, current='', home=False, extra='', 
 </body>
 </html>
 '''
+    doc = versioned(doc)
     target = path or out_path(ROUTES[lang][key])
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(doc, encoding='utf-8', newline='\n')

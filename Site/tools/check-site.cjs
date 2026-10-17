@@ -91,6 +91,10 @@ for (const { route, file } of [...pages, ...extra]) {
     });
     assert.ok(sizes[0] <= 120 * 1024, route + ' mobile candidate over 120 KB');
   }
+  // revT2: every local CSS/JS/image URL carries ?v=<hash> so a deploy reaches phones despite the 1-hour asset cache.
+  for (const node of doc.querySelectorAll('link[href^="/assets/"], script[src^="/assets/"], img[src^="/assets/"]')) {
+    assert.ok(/\?v=[0-9a-f]{8}$/.test(node.getAttribute('href') || node.getAttribute('src')), route + ' unversioned asset ' + (node.getAttribute('href') || node.getAttribute('src')));
+  }
   dom.window.close();
 }
 done(`All ${pages.length + extra.length} pages: headings, IDs, absolute local assets, srcset budget, navigation and anchors`);
@@ -232,18 +236,18 @@ for (const lang of ['en', 'tr']) {
   const frames = doc.querySelectorAll('.product-frames .product-frame-item');
   assert.equal(frames.length, 3, 'A: three frames');
   assert.equal(doc.querySelectorAll('.product-frame-item figcaption').length, 0, 'A: frames carry no captions');
-  assert.ok(frames[0].querySelector('img').src.endsWith('peak-portrait.webp'));
-  assert.ok(frames[1].querySelector('img').src.endsWith('peak-still.webp'));
-  assert.ok(frames[2].querySelector('img').src.endsWith('peak-tattoo-portrait.webp'));
+  assert.ok(frames[0].querySelector('img').src.split('?')[0].endsWith('peak-portrait.webp'));
+  assert.ok(frames[1].querySelector('img').src.split('?')[0].endsWith('peak-still.webp'));
+  assert.ok(frames[2].querySelector('img').src.split('?')[0].endsWith('peak-tattoo-portrait.webp'));
   assert.equal(frames[0].querySelector('img').getAttribute('fetchpriority'), 'high', 'first frame is the LCP image');
   assert.equal(doc.querySelector('.product-layout [data-comparison], .product-layout input[type=range], .gallery-thumbs'), null, 'A: no slider or thumbnail buttons');
   click(peak, '.product-frame-item:nth-child(2) [data-zoom]');
   assert.equal(doc.getElementById('image-dialog').open, true);
-  assert.ok(doc.getElementById('zoom-image').src.endsWith('peak-still.webp'), 'zoom shows the clicked frame');
+  assert.ok(doc.getElementById('zoom-image').src.split('?')[0].endsWith('peak-still.webp'), 'zoom shows the clicked frame');
   assert.ok(documentOf(ring).querySelectorAll('.product-frames .product-frame-item').length === 3);
   click(peak, '#image-dialog [data-close-dialog]');
   assert.equal(doc.getElementById('image-dialog').open, false);
-  assert.ok(doc.querySelector('.related-photo img').src.endsWith('mid-levels-still.webp'), 'related piece shown as its 4:5 still');
+  assert.ok(doc.querySelector('.related-photo img').src.split('?')[0].endsWith('mid-levels-still.webp'), 'related piece shown as its 4:5 still');
   assert.deepEqual(Array.from(doc.querySelectorAll('.product-details summary'), el => el.textContent), c.summaries);
   assert.ok(doc.querySelector('.product-details details p').textContent.includes(c.material), 'material stated by Eren (17 Oct)');
   assert.equal(doc.querySelector('.edition-note')?.textContent, c.limited);
@@ -279,7 +283,7 @@ for (const lang of ['en', 'tr']) {
     assert.ok(Object.values(r).includes(s.querySelector('.scene-copy .text-link').getAttribute('href')), 'scene links to its product page');
   }
   assert.equal(doc.querySelector('.story'), null, 'revQ: the story sentence is gone');
-  assert.ok(doc.querySelector('.sketch-strip img').src.endsWith('hk-strip.webp'), 'revQ: closing shows the real flash-sheet row');
+  assert.ok(doc.querySelector('.sketch-strip img').src.split('?')[0].endsWith('hk-strip.webp'), 'revQ: closing shows the real flash-sheet row');
   assert.equal(doc.querySelector('.sketch-strip .text-link').getAttribute('href'), r.about);
   assert.equal(doc.querySelector('.footer-wordmark').getAttribute('aria-hidden'), 'true', '5-A wordmark is decorative');
   assert.equal(doc.querySelector('textPath'), null);
@@ -301,9 +305,9 @@ for (const lang of ['en', 'tr']) {
   const doc = documentOf(collection);
   const cards = doc.querySelectorAll('.collection-grid .collection-card');
   assert.equal(cards.length, 2, 'Collection A: two cards');
-  assert.ok(cards[0].querySelector('.card-still').src.endsWith('peak-still.webp'), 'piece alone first');
-  assert.ok(cards[1].querySelector('.card-still').src.endsWith('mid-levels-still.webp'));
-  assert.ok(cards[0].querySelector('.card-worn').dataset.src.endsWith('peak-portrait.webp') && !cards[0].querySelector('.card-worn').hasAttribute('src'), 'revR: worn view under it, deferred until hover is possible');
+  assert.ok(cards[0].querySelector('.card-still').src.split('?')[0].endsWith('peak-still.webp'), 'piece alone first');
+  assert.ok(cards[1].querySelector('.card-still').src.split('?')[0].endsWith('mid-levels-still.webp'));
+  assert.ok(cards[0].querySelector('.card-worn').dataset.src.split('?')[0].endsWith('peak-portrait.webp') && !cards[0].querySelector('.card-worn').hasAttribute('src'), 'revR: worn view under it, deferred until hover is possible');
   assert.equal(cards[0].querySelector('.card-worn').getAttribute('alt'), '', 'worn layer is decorative');
   assert.equal(doc.querySelector('[data-comparison], input[type=range]'), null, 'Collection A: no slider');
   assert.equal(doc.querySelector('.collection-head h1').textContent, 'Hong Kong');

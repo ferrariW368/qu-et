@@ -51,7 +51,7 @@ module.exports = async (browser, url, out, report) => {
   // 4. Image zoom opens the clicked frame and closes again.
   await page.click('.product-frame-item:nth-child(2) [data-zoom]');
   await page.waitForTimeout(300);
-  const open = await page.evaluate(() => document.getElementById('image-dialog').open && document.getElementById('zoom-image').src.endsWith('peak-still.webp'));
+  const open = await page.evaluate(() => document.getElementById('image-dialog').open && document.getElementById('zoom-image').src.split('?')[0].endsWith('peak-still.webp'));
   await page.click('#image-dialog .icon-close');
   await page.waitForTimeout(300);
   const closed = await page.evaluate(() => !document.getElementById('image-dialog').open);

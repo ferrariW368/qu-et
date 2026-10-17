@@ -621,13 +621,19 @@ svg.footer-wordmark{display:block;width:calc(100% - 2 * var(--gutter));height:au
 /* ===== revT (17 Ekim, Eren) =====
    Hero: the wall wordmark paints in once and stays; scrolling fades it and brings the corner logo in
    (site.js writes --hero-fade from 1 at the top to 0 at ~45% of the hero). Return visits skip the paint-in.
-   About: the quote sits beside the portrait at its middle, so it is seen on arrival, not below the fold. */
-@media(prefers-reduced-motion:no-preference){
+   About: the quote sits beside the portrait at its middle, so it is seen on arrival, not below the fold.
+   revT2 (Eren): the scroll fade is desktop only. Phones keep the timed paint-in → fade → corner logo (revC). */
+@media(min-width:761px) and (prefers-reduced-motion:no-preference){
  .hero-mark-animated{animation:wall-in 1.4s ease-out .3s both}
  .intro-seen .hero-mark-animated{animation:none;opacity:1}
  .home .site-header .logo,.intro-seen .home .site-header .logo{animation:none;opacity:calc(1 - var(--hero-fade,1));transition:opacity .25s linear}
  .home .site-header .logo:focus-visible,.intro-seen .home .site-header .logo:focus-visible{opacity:1}
 }
 @keyframes wall-in{from{opacity:0}to{opacity:1}}
-.hero-mark-animated .hero-wordmark{opacity:var(--hero-fade,1)}
+@media(min-width:761px){.hero-mark-animated .hero-wordmark{opacity:var(--hero-fade,1)}}
 .about-artist{align-items:center}
+
+/* revT2 (17 Ekim): the last section's bottom padding and the footer's top padding stacked (~180px on phones, ~360px on desktop) of
+   empty space with no purpose; one moderate gap is enough. */
+.studio-section,.collection-products{padding-bottom:clamp(40px,5vw,80px)}
+@media(max-width:760px){.site-footer{padding-top:56px}}

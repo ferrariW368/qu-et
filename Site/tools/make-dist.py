@@ -22,10 +22,10 @@ if DIST.exists():
 refs = set(ALWAYS)
 for name in PAGES:
     html = (SITE / name).read_text(encoding='utf-8')
-    for attr in re.findall(r'(?:src|href|data-src)="(/assets/[^"#?]+)"', html):
+    for attr in re.findall(r'(?:src|href|data-src)="(/assets/[^"#?]+)(?:\?[^"]*)?"', html):
         refs.add(attr.lstrip('/'))
     for group in re.findall(r'(?:srcset|data-srcset)="([^"]+)"', html):
-        refs.update(part.strip().split()[0].lstrip('/') for part in group.split(','))
+        refs.update(part.strip().split()[0].split('?')[0].lstrip('/') for part in group.split(','))
     refs.add(name)
 # Images the bag draws from JavaScript (site.js) are not in any HTML attribute.
 refs.update(m.lstrip('/') for m in re.findall(r"'(/assets/images/[^']+)'", (SITE / 'assets/site.js').read_text(encoding='utf-8')))
