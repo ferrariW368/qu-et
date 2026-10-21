@@ -104,7 +104,7 @@ const parseErrors = [];
 const ast = cssTree.parse(css, { onParseError: error => parseErrors.push(error.message) });
 assert.deepEqual(parseErrors, []);
 cssTree.walk(ast, node => {
-  if (node.type === 'Url') assert.ok(fs.existsSync(path.join(root, 'assets', node.value)), node.value);
+  if (node.type === 'Url' && !node.value.startsWith('data:')) assert.ok(fs.existsSync(path.join(root, 'assets', node.value)), node.value);
   if (node.type === 'Url' && node.value.startsWith('fonts/')) assert.ok(node.value.endsWith('.woff2'), 'font budget: woff2 only ' + node.value);
 });
 done('CSS parses and all local font files exist');

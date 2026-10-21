@@ -93,7 +93,7 @@ input,select,textarea{min-width:0}
 .home-about .side{max-width:350px;padding-bottom:6px}
 .home-about p{color:var(--muted);font-size:17px}
 .text-link{display:inline-flex;gap:24px;align-items:center;font-size:14px;letter-spacing:.03em;border-bottom:1px solid #79756e;padding-bottom:7px;margin-top:28px}
-.text-link::after{content:'↗';font-size:17px}
+.text-link::after{content:'';flex:none;width:11px;height:11px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M1.5 10.5 10.5 1.5M3.5 1.5h7v7' fill='none' stroke='%23000' stroke-width='1.1'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M1.5 10.5 10.5 1.5M3.5 1.5h7v7' fill='none' stroke='%23000' stroke-width='1.1'/%3E%3C/svg%3E") center/contain no-repeat} /* revX: drawn arrow — iOS rendered the U+2197 glyph as a grey emoji tile */
 .text-link:hover{border-color:var(--text)}
 .site-footer{padding:72px 0 30px;background:var(--night)}
 .footer-top{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:start;padding-bottom:65px}
@@ -649,3 +649,7 @@ svg.footer-wordmark{display:block;width:calc(100% - 2 * var(--gutter));height:au
  .product-info .order-actions{position:fixed;left:0;right:0;bottom:0;z-index:20;margin:0;padding:12px var(--gutter) calc(12px + env(safe-area-inset-bottom,0px));background:rgba(18,18,17,.97);border-top:1px solid var(--line)}
  body:has(.product-info .order-actions) .site-footer{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
 }
+
+/* revX (21 Ekim): About shows one photo of Pınar's work on the light band instead of the two flash sheets. */
+.about-piece{max-width:640px;margin:0 auto}
+.about-piece img{display:block;width:100%;height:auto;aspect-ratio:1440/1798}

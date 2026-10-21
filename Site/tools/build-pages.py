@@ -39,7 +39,7 @@ T['tr'] = {
   'collection_meta': 'Hong Kong koleksiyonu. Peak küpe ve Mid-Levels yüzük.',
   'about_title': 'Hakkımızda', 'about_meta': 'qu/et ve Pınar’ın çizgiyle kurduğu ilişki. İstanbul’dan gümüşe uzanan bir tasarım dili.',
   'portrait_alt': 'Pınar, çalışma masasında bir çizim defterini inceliyor', 'quote_footer': 'Pınar — Studio FIYN, İstanbul',
-  'sheets_title': 'Hong Kong çizimleri',
+  'sheets_title': 'Pınar\'ın bir çalışması', 'piece_alt': 'Pınar\'ın ince çizgi dövmesi: önkoldan parmak ucuna uzanan tek çizgi ve parmakta küçük bir figür',
   'sheet1_alt': "Hong Kong flash sheet, birinci sayfa: 01 Open end'den 09 Look up'a dokuz ince çizgi tasarım",
   'sheet2_alt': "Hong Kong flash sheet, ikinci sayfa: 10 A way through'dan 15 Elsewhere'e altı tasarım ve 'Reducing things to their simplest form' notu",
   'studio_place': 'Studio FIYN, Nişantaşı / İstanbul.', 'insta': "Instagram'da Pınar",
@@ -69,7 +69,7 @@ T['en'] = {
   'collection_meta': 'The Hong Kong collection. Peak earring and Mid-Levels ring.',
   'about_title': 'About', 'about_meta': "qu/et and Pınar's relationship with the line. A design language that runs from Istanbul to silver.",
   'portrait_alt': 'Pınar at her desk, looking through a sketchbook', 'quote_footer': 'Pınar — Studio FIYN, Istanbul',
-  'sheets_title': 'Hong Kong drawings',
+  'sheets_title': 'A piece by Pınar', 'piece_alt': 'Fine-line tattoo by Pınar: a single line from forearm to fingertip, with a small figure on the finger',
   'sheet1_alt': 'Hong Kong flash sheet, page one: nine fine-line designs, from 01 Open end to 09 Look up',
   'sheet2_alt': "Hong Kong flash sheet, page two: six designs, from 10 A way through to 15 Elsewhere, with the note 'Reducing things to their simplest form'",
   'studio_place': 'Studio FIYN, Nişantaşı / Istanbul.', 'insta': 'Pınar on Instagram',
@@ -155,7 +155,8 @@ SIZES = {'wide': '(max-width: 760px) calc(100vw - 48px), min(89vw, 1280px)',
          'full': '100vw',
          'split': '(max-width: 760px) 100vw, 45vw',
          'pair': '(max-width: 760px) 100vw, 50vw',
-         'card': '(max-width: 760px) calc(100vw - 48px), 50vw'}  # revR: collection cards sit inside the 24px gutters
+         'card': '(max-width: 760px) calc(100vw - 48px), 50vw',
+         'piece': '(max-width: 760px) calc(100vw - 48px), 640px'}  # revR: collection cards sit inside the 24px gutters
 
 def candidates(stem):
     smaller = sorted(int(m.group(1)) for f in IMAGES.glob(f'{stem}-*.webp') if (m := re.fullmatch(re.escape(stem) + r'-(\d+)\.webp', f.name)))
@@ -382,6 +383,7 @@ def build(lang):
     page(lang, 'collection', 'Hong Kong', t['collection_meta'], collection, current='collection')
 
     # revT (17 Oct, Eren): the launch-date row under the cards is gone (date sits on product pages, About in the menu).
+    # revX (21 Oct, Eren): the two HK flash sheets on About replaced by one photo — @pinar.ink 26 Mar 2026 post, first frame.
     # revN (17 Oct): About built from Pınar's own material (@pinar.ink, Hong Kong Flash sheets, 27 Sep 2026; Eren has full rights).
     about = f'''<main id="main">
   <section class="about-artist shell" aria-labelledby="about-title">
@@ -391,11 +393,8 @@ def build(lang):
   </section>
   <section class="about-sheets" aria-labelledby="sheets-title">
     <div class="shell">
-      <h2 id="sheets-title" class="sheets-title">{t['sheets_title']}</h2>
-      <div class="sheets-grid">
-        <img src="/assets/images/hk-sheet-1.webp" {srcset('hk-sheet-1', 'pair')} alt="{t['sheet1_alt']}" width="1440" height="1800" loading="lazy" decoding="async">
-        <img src="/assets/images/hk-sheet-2.webp" {srcset('hk-sheet-2', 'pair')} alt="{t['sheet2_alt']}" width="1440" height="1800" loading="lazy" decoding="async">
-      </div>
+      <h2 id="sheets-title" class="sr-only">{t['sheets_title']}</h2>
+      <figure class="about-piece"><img src="/assets/images/el-cizgi.webp" {srcset('el-cizgi', 'piece')} alt="{t['piece_alt']}" width="1440" height="1798" loading="lazy" decoding="async"></figure>
     </div>
   </section>
   <section class="studio-section shell" id="studio" aria-labelledby="studio-title">
