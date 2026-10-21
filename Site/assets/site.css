@@ -650,6 +650,13 @@ svg.footer-wordmark{display:block;width:calc(100% - 2 * var(--gutter));height:au
  body:has(.product-info .order-actions) .site-footer{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
 }
 
-/* revX (21 Ekim): About shows one photo of Pınar's work on the light band instead of the two flash sheets. */
-.about-piece{max-width:640px;margin:0 auto}
+/* revY (22 Ekim, Eren): the arm photo is full-bleed, not a boxed card. The band takes the photo's own grey (edge colours sampled: #dcdcdc top → #cfcfcf bottom)
+   so no frame is visible. Phones: edge to edge, natural height. Desktop: centred at most one screen tall, soft fade on the sides so the arm leaves the frame into the band. */
+.about-sheets{background:linear-gradient(180deg,#dcdcdc,#cfcfcf);padding-block:0}
+.about-sheets>.shell{width:100%}
+.about-piece{margin:0}
 .about-piece img{display:block;width:100%;height:auto;aspect-ratio:1440/1798}
+@media(min-width:761px){
+ .about-sheets{padding-block:clamp(48px,5vw,88px)}
+ .about-piece img{width:auto;height:min(94vh,980px);max-width:100%;margin-inline:auto;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent),linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent),linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent);mask-composite:intersect}
+}
