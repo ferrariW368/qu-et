@@ -642,3 +642,10 @@ svg.footer-wordmark{display:block;width:calc(100% - 2 * var(--gutter));height:au
 .legal-text{max-width:680px;padding-bottom:clamp(40px,5vw,80px)}
 .legal-text h2{font-size:18px;margin:36px 0 10px;letter-spacing:.01em}
 .legal-text p{color:var(--muted);font-size:15px;line-height:1.7}
+
+/* revW (20 Ekim): fixed add-to-bag bar on phones — always one tap away while reading details or the related piece.
+   The footer gets matching bottom room so the bar never covers its last line. */
+@media(max-width:760px){
+ .product-info .order-actions{position:fixed;left:0;right:0;bottom:0;z-index:20;margin:0;padding:12px var(--gutter) calc(12px + env(safe-area-inset-bottom,0px));background:rgba(18,18,17,.97);border-top:1px solid var(--line)}
+ body:has(.product-info .order-actions) .site-footer{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+}

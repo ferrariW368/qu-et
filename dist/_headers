@@ -1,8 +1,9 @@
 # Security headers for static hosting (Cloudflare Pages / Netlify format).
 # Verified locally with _claude/qa/serve-with-headers.py + browser-check (0 CSP violations).
+# revW (20 Oct): CSP allows Cloudflare Web Analytics (beacon script + report endpoint); cookieless, so no consent banner.
 # X-Robots-Tag: demo phase (sample prices, AI images) keeps search engines out. REMOVE it when the real domain goes live (SİTE 09).
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()

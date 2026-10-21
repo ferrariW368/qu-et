@@ -16,6 +16,11 @@ ROUTES = {
     'tr': {'home': '/tr/', 'collection': '/tr/koleksiyon/', 'about': '/tr/hakkimizda/', 'peak': '/tr/peak/', 'mid-levels': '/tr/mid-levels/', 'bag': '/tr/sepet/', 'checkout': '/tr/siparis/', 'privacy': '/tr/kvkk/'},
 }
 
+# revW (20 Oct): absolute origin for OG tags, robots.txt and sitemap.xml. Domain not chosen yet (SİTE 04/09):
+# change this one line when it is, then rebuild + make-dist.
+SITE_URL = 'https://qu-et.pages.dev'
+OG_LOCALE = {'en': 'en_US', 'tr': 'tr_TR'}
+
 # Copy: TR as approved; EN drafted 17 Oct (_claude/metin-en-taslak.md), awaiting Eren's approval.
 T = {}
 T['tr'] = {
@@ -37,7 +42,7 @@ T['tr'] = {
   'sheets_title': 'Hong Kong çizimleri',
   'sheet1_alt': "Hong Kong flash sheet, birinci sayfa: 01 Open end'den 09 Look up'a dokuz ince çizgi tasarım",
   'sheet2_alt': "Hong Kong flash sheet, ikinci sayfa: 10 A way through'dan 15 Elsewhere'e altı tasarım ve 'Reducing things to their simplest form' notu",
-  'studio_place': 'Studio FIYN, Nişantaşı / İstanbul.', 'studio_next': 'Kasımda Hong Kong ve Seul.', 'insta': "Instagram'da Pınar",
+  'studio_place': 'Studio FIYN, Nişantaşı / İstanbul.', 'insta': "Instagram'da Pınar",
   'gallery_aria': '{name} görselleri', 'worn_alt': '{name} {kind}, takılı görünüm', 'skin_alt': "{name}, Pınar'ın çizimi tende", 'enlarge': '{alt}, büyüt',
   'sample_price': 'Örnek fiyat', 'preorder_date': 'Ön sipariş · 8 Kasım 2026', 'preorder': 'Ön sipariş', 'preorder_closed': "Ön sipariş 8 Kasım'da açılıyor",
   'material': 'Malzeme', 'material_text': '925 ayar gümüş, kaplamasız.', 'size': 'Ölçü', 'size_text': 'Kesin ölçüler ön sipariş açılışında paylaşılacak.',
@@ -67,7 +72,7 @@ T['en'] = {
   'sheets_title': 'Hong Kong drawings',
   'sheet1_alt': 'Hong Kong flash sheet, page one: nine fine-line designs, from 01 Open end to 09 Look up',
   'sheet2_alt': "Hong Kong flash sheet, page two: six designs, from 10 A way through to 15 Elsewhere, with the note 'Reducing things to their simplest form'",
-  'studio_place': 'Studio FIYN, Nişantaşı / Istanbul.', 'studio_next': 'Hong Kong and Seoul in November.', 'insta': 'Pınar on Instagram',
+  'studio_place': 'Studio FIYN, Nişantaşı / Istanbul.', 'insta': 'Pınar on Instagram',
   'gallery_aria': '{name} images', 'worn_alt': '{name} {kind}, worn', 'skin_alt': "{name}, Pınar's drawing on skin", 'enlarge': '{alt}, enlarge',
   'sample_price': 'Sample price', 'preorder_date': 'Pre-order · 8 November 2026', 'preorder': 'Pre-order', 'preorder_closed': 'Pre-orders open 8 November',
   'material': 'Material', 'material_text': '925 sterling silver, unplated.', 'size': 'Size', 'size_text': 'Exact dimensions will be shared when pre-orders open.',
@@ -259,6 +264,16 @@ def versioned(doc):
         return path + ('?v=' + _VERSION[path] if _VERSION[path] else '')
     return re.sub(r'(/assets/[A-Za-z0-9_./-]+\.(?:css|js|webp|svg|png|jpg|woff2))(?![?\w])', tag, doc)
 
+def og_tags(lang, key, title, description, path):
+    # revW: link previews (Instagram/WhatsApp/X). One shared 1200x630 image; og:url only for routed pages.
+    full = 'qu/et' if title == 'qu/et' else f'{title} · qu/et'
+    url = f'<meta property="og:url" content="{SITE_URL}{ROUTES[lang][key]}">' if path is None and key in ROUTES[lang] else ''
+    return (f'<meta property="og:type" content="website"><meta property="og:site_name" content="qu/et">'
+            f'<meta property="og:title" content="{escape(full, quote=True)}"><meta property="og:description" content="{escape(description, quote=True)}">'
+            f'<meta property="og:image" content="{SITE_URL}/assets/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
+            f'<meta property="og:image:alt" content="{escape(T[lang]["band_alt"], quote=True)}"><meta property="og:locale" content="{OG_LOCALE[lang]}">'
+            f'{url}<meta name="twitter:card" content="summary_large_image">')
+
 def page(lang, key, title, description, main, current='', home=False, extra='', path=None, alternates=True):
     alt_links = ''
     if alternates and key in ROUTES['en']:
@@ -275,6 +290,8 @@ def page(lang, key, title, description, main, current='', home=False, extra='', 
   <meta name="theme-color" content="#121211">
   <title>{escape(title) if title == 'qu/et' else escape(title) + ' · qu/et'}</title>
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  {og_tags(lang, key, title, description, path)}
   <link rel="stylesheet" href="/assets/site.css">
   {alt_links}
   {extra}
@@ -293,6 +310,22 @@ def page(lang, key, title, description, main, current='', home=False, extra='', 
     target = path or out_path(ROUTES[lang][key])
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(doc, encoding='utf-8', newline='\n')
+
+# revW: generated before any page so versioned() can hash them. PNG icon for iOS home screen, OG image, robots.txt, sitemap.xml (generated, never hand-edited).
+from PIL import ImageDraw
+_icon = Image.new('RGB', (180, 180), '#121211'); ImageDraw.Draw(_icon).line([(112.5, 33.75), (67.5, 146.25)], fill='#e9e5df', width=5)
+_icon.save(SITE/'assets'/'apple-touch-icon.png', optimize=True)
+_hk = Image.open(IMAGES/'hong-kong.webp').convert('RGB'); _h = round(_hk.width * 630 / 1200)
+_hk.crop((0, 0, _hk.width, _h)).resize((1200, 630), Image.LANCZOS).save(SITE/'assets'/'og-image.jpg', 'JPEG', quality=82, optimize=True, progressive=True)
+_m = (_hk.width - 1100) // 2
+_hk.crop((_m, 0, _m + 1100, _hk.height)).save(IMAGES/'hong-kong-m.webp', 'WEBP', quality=90, method=6)
+(SITE/'robots.txt').write_text(f'User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n', encoding='utf-8', newline='\n')
+_urls = []
+for _k in ('home', 'collection', 'about', 'peak', 'mid-levels', 'privacy'):
+    _alt = ''.join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{SITE_URL}{ROUTES[l][_k]}"/>' for l in ('en', 'tr'))
+    _alt += f'<xhtml:link rel="alternate" hreflang="x-default" href="{SITE_URL}{ROUTES["en"][_k]}"/>'
+    _urls += [f'  <url><loc>{SITE_URL}{ROUTES[l][_k]}</loc>{_alt}</url>' for l in ('en', 'tr')]
+(SITE/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + '\n'.join(_urls) + '\n</urlset>\n', encoding='utf-8', newline='\n')
 
 def collection_card(lang, pid, name, kind):
     # Collection A (Eren, 17 Oct): the piece alone on stone first; hover/focus reveals it worn. No controls.
@@ -317,7 +350,7 @@ def build(lang):
     {hero_scene()}
   </section>
   <section class="collection-band" aria-labelledby="collection-heading">
-    <img src="/assets/images/hong-kong.webp" alt="{t['band_alt']}" width="1672" height="941" fetchpriority="low" decoding="async">
+    <picture><source media="(max-width: 760px)" srcset="/assets/images/hong-kong-m.webp"><img src="/assets/images/hong-kong.webp" alt="{t['band_alt']}" width="1672" height="941" fetchpriority="low" decoding="async"></picture>
     <div class="copy"><h2 id="collection-heading">Hong Kong</h2>
       <a class="text-link band-link" href="{r['collection']}">{t['explore_collection']}</a>
     </div>
@@ -367,7 +400,7 @@ def build(lang):
   </section>
   <section class="studio-section shell" id="studio" aria-labelledby="studio-title">
     <h2 id="studio-title">{t['studio']}</h2>
-    <div class="studio-copy"><p>{t['studio_place']}</p><p>{t['studio_next']}</p><a class="text-link" href="https://www.instagram.com/pinar.ink/" target="_blank" rel="noopener">{t['insta']}</a></div>
+    <div class="studio-copy"><p>{t['studio_place']}</p><a class="text-link" href="https://www.instagram.com/pinar.ink/" target="_blank" rel="noopener">{t['insta']}</a></div>
   </section>
 </main>'''
     page(lang, 'about', t['about_title'], t['about_meta'], about, current='about')
