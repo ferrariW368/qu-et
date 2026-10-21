@@ -25,7 +25,7 @@ OG_LOCALE = {'en': 'en_US', 'tr': 'tr_TR'}
 T = {}
 T['tr'] = {
   'skip': 'İçeriğe geç', 'home_aria': 'qu/et ana sayfa', 'main_menu': 'Ana menü', 'collection': 'Koleksiyon', 'about': 'Hakkında',
-  'footer_menu': 'Alt menü', 'studio': 'Stüdyo', 'email': 'E-posta', 'istanbul': 'İstanbul',
+  'footer_menu': 'Alt menü', 'studio': 'Stüdyo', 'email': 'E-posta', 'istanbul': 'İstanbul', 'zurich': 'Zürih',
   'switch_label': 'EN', 'switch_lang': 'en',
   'product_image': 'Ürün görseli', 'close_image': 'Görseli kapat',
   'home_meta': 'Pınar’ın çizgilerinden doğan gümüş takılar. Hong Kong koleksiyonunu keşfet.',
@@ -55,7 +55,7 @@ T['tr'] = {
 }
 T['en'] = {
   'skip': 'Skip to content', 'home_aria': 'qu/et home', 'main_menu': 'Main menu', 'collection': 'Collection', 'about': 'About',
-  'footer_menu': 'Footer menu', 'studio': 'Studio', 'email': 'Email', 'istanbul': 'Istanbul',
+  'footer_menu': 'Footer menu', 'studio': 'Studio', 'email': 'Email', 'istanbul': 'Istanbul', 'zurich': 'Zurich',
   'switch_label': 'TR', 'switch_lang': 'tr',
   'product_image': 'Product image', 'close_image': 'Close image',
   'home_meta': "Silver jewellery born from Pınar's lines. Explore the Hong Kong collection.",
@@ -233,7 +233,7 @@ def footer(lang):
     return f'''<footer class="site-footer"><div class="shell">
   <div class="footer-row">
     <nav class="footer-links" aria-label="{t['footer_menu']}"><a href="{r['collection']}">{t['collection']}</a><a href="{r['about']}">{t['about']}</a><a href="{r['about']}#studio">{t['studio']}</a><a href="https://www.instagram.com/pinar.ink/" target="_blank" rel="noopener">Instagram</a><a href="mailto:pnar.akdemiir@gmail.com">{t['email']}</a><a href="{r['privacy']}">{t['privacy']}</a></nav>
-    <div class="place-times"><span>{t['istanbul']} <time data-clock="Europe/Istanbul"></time></span><span>Hong Kong <time data-clock="Asia/Hong_Kong"></time></span></div>
+    <div class="place-times">{''.join(f'<span>{label} <time data-clock="{tz}"></time></span>' for label, tz in ((t['istanbul'], 'Europe/Istanbul'), ('Hong Kong', 'Asia/Hong_Kong'), ('New York', 'America/New_York'), ('Stockholm', 'Europe/Stockholm'), (t['zurich'], 'Europe/Zurich')))}</div>
     <span class="footer-copy">© 2026</span>
   </div>
 </div><svg class="footer-wordmark" viewBox="16 12 811 369" aria-hidden="true" focusable="false"><text x="0" y="292">qu<tspan class="slash">/</tspan>et</text></svg></footer>'''
